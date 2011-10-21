@@ -1,10 +1,9 @@
 package com.fountainhead.client.place;
 
+import com.google.gwt.event.shared.EventBus;
+import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.proxy.PlaceManagerImpl;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
-import com.fountainhead.client.place.DefaultPlace;
-import com.google.inject.Inject;
-import com.google.gwt.event.shared.EventBus;
 import com.gwtplatform.mvp.client.proxy.TokenFormatter;
 
 public class ClientPlaceManager extends PlaceManagerImpl {
@@ -19,8 +18,14 @@ public class ClientPlaceManager extends PlaceManagerImpl {
 		this.defaultPlaceRequest = new PlaceRequest(defaultPlaceNameToken);
 	}
 
+	
 	@Override
 	public void revealDefaultPlace() {
-		revealPlace(defaultPlaceRequest, false);
+		revealPlace(new PlaceRequest(NameTokens.loginPage));
+	}
+
+	@Override
+	public void revealErrorPlace(String invalidHistoryToken) {
+		super.revealErrorPlace(invalidHistoryToken);
 	}
 }

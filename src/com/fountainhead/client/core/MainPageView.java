@@ -1,76 +1,75 @@
+
 package com.fountainhead.client.core;
 
-import com.gwtplatform.mvp.client.ViewImpl;
-import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HasValue;
-import com.google.gwt.user.client.ui.HTMLPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
+import com.fountainhead.client.core.ui.RoundTabPanel;
+import com.google.gwt.core.client.GWT;
+import com.google.gwt.uibinder.client.UiBinder;
+import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Widget;
-import com.google.inject.Inject;
+import com.gwtplatform.mvp.client.Tab;
+import com.gwtplatform.mvp.client.TabData;
+import com.gwtplatform.mvp.client.ViewImpl;
 
+/**
+ * This is the main view of the application. Every time a leaf presenter wants
+ * to reveal himself, mainPage will add the content of the target inside the
+ * mainContantPanel.
+ * 
+ * 
+ */
 public class MainPageView extends ViewImpl implements MainPagePresenter.MyView {
+	private static MainPageViewUiBinder uiBinder = GWT
+			.create(MainPageViewUiBinder.class);
 
-	private static String html = "<h1>Web Application Starter Project</h1>\n"
-			+ "<table align=\"center\">\n"
-			+ "  <tr>\n"
-			+ "    <td colspan=\"2\" style=\"font-weight:bold;\">Please enter your name:</td>\n"
-			+ "  </tr>\n"
-			+ "  <tr>\n"
-			+ "    <td id=\"nameFieldContainer\"></td>\n"
-			+ "    <td id=\"sendButtonContainer\"></td>\n"
-			+ "  </tr>\n"
-			+ "  <tr>\n"
-			+ "    <td colspan=\"2\" style=\"color:red;\" id=\"errorLabelContainer\"></td>\n"
-			+ "  </tr>\n" + "</table>\n";
-	private final HTMLPanel panel = new HTMLPanel(html);
-	private final Label errorLabel;
-	private final TextBox nameField;
-	private final Button sendButton;
+	interface MainPageViewUiBinder extends UiBinder<Widget, MainPageView> {
+	}
 
-	@Inject
+	public final Widget widget;
+
+	@UiField
+	RoundTabPanel tabPanel;
+
 	public MainPageView() {
-
-		sendButton = new Button("Send");
-		nameField = new TextBox();
-		nameField.setText("GWT User");
-		errorLabel = new Label();
-
-		// We can add style names to widgets
-		sendButton.addStyleName("sendButton");
-
-		// Add the nameField and sendButton to the RootPanel
-		// Use RootPanel.get() to get the entire body element
-		panel.add(nameField, "nameFieldContainer");
-		panel.add(sendButton, "sendButtonContainer");
-		panel.add(errorLabel, "errorLabelContainer");
+		widget = uiBinder.createAndBindUi(this);
 	}
 
 	@Override
 	public Widget asWidget() {
-		return panel;
+		return widget;
+	}
+
+	/*@Override
+	public void setContent(Object slot, Widget content) {
+		if (slot == MainPagePresenter.TYPE_SetTabContent) {
+			tabPanel.setPanelContent(content);
+		} else {
+			super.setContent(slot, content);
+		}
 	}
 
 	@Override
-	public HasValue<String> getNameValue() {
-		return nameField;
+	public Tab addTab(String tabName, String historyToken, float priority) {
+		return tabPanel.addTab(tabName, historyToken, priority);
+	}
+*/
+	@Override
+	public void removeTab(Tab tab) {
+		tabPanel.removeTab(tab);
 	}
 
 	@Override
-	public HasClickHandlers getSendClickHandlers() {
-		return sendButton;
+	public void removeTabs() {
+		tabPanel.removeTabs();
 	}
 
 	@Override
-	public void resetAndFocus() {
-		// Focus the cursor on the name field when the app loads
-		nameField.setFocus(true);
-		nameField.selectAll();
+	public void setActiveTab(Tab tab) {
+		tabPanel.setActiveTab(tab);
 	}
 
 	@Override
-	public void setError(String errorText) {
-		errorLabel.setText(errorText);
+	public Tab addTab(TabData tabData, String historyToken) {
+		// TODO Auto-generated method stub
+		return tabPanel.addTab(tabData, historyToken);
 	}
 }

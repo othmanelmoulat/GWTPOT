@@ -1,89 +1,64 @@
+
+
 package com.fountainhead.client.core;
 
-import com.gwtplatform.mvp.client.Presenter;
-import com.gwtplatform.mvp.client.View;
-import com.gwtplatform.mvp.client.annotations.ProxyStandard;
-import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.fountainhead.client.gatekeeper.UserGatekeeper;
 import com.fountainhead.client.place.NameTokens;
-import com.gwtplatform.mvp.client.proxy.ProxyPlace;
-import com.google.inject.Inject;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.event.shared.GwtEvent.Type;
+import com.google.inject.Inject;
+import com.gwtplatform.mvp.client.RequestTabsHandler;
+import com.gwtplatform.mvp.client.TabContainerPresenter;
+import com.gwtplatform.mvp.client.TabView;
+import com.gwtplatform.mvp.client.annotations.ContentSlot;
+import com.gwtplatform.mvp.client.annotations.NameToken;
+import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.annotations.RequestTabs;
+import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
+import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.event.dom.client.HasClickHandlers;
-import com.google.gwt.user.client.ui.HasValue;
-import com.gwtplatform.mvp.client.proxy.PlaceManager;
-import com.gwtplatform.mvp.client.proxy.PlaceRequest;
-import com.fountainhead.shared.FieldVerifier;
 
+/**
+ * This is the main presenter of the application. It's a
+ * {@link com.gwtplatform.mvp.client.TabContainerPresenter}.
+ * 
+ *
+ */
 public class MainPagePresenter
 		extends
-			Presenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> {
+		TabContainerPresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy> {
 
-	public interface MyView extends View {
+	/**
+	 * Use this in leaf presenters, inside their {@link #revealInParent} method.
+	 */
+	@ContentSlot
+	public static final Type<RevealContentHandler<?>> TYPE_SetTabContent = new Type<RevealContentHandler<?>>();
 
-		HasValue<String> getNameValue();
+	/**
+	 * This will be the event sent to our "unknown" child presenters, in order
+	 * for them to register their tabs.
+	 */
+	@RequestTabs
+	public static final Type<RequestTabsHandler> TYPE_RequestTabs = new Type<RequestTabsHandler>();
 
-		HasClickHandlers getSendClickHandlers();
-
-		void resetAndFocus();
-
-		void setError(String errorText);
+	public interface MyView extends TabView {
 	}
 
 	@ProxyStandard
 	@NameToken(NameTokens.main)
+	@UseGatekeeper(UserGatekeeper.class)
 	public interface MyProxy extends ProxyPlace<MainPagePresenter> {
 	}
 
-	private final PlaceManager placeManager;
-
 	@Inject
 	public MainPagePresenter(final EventBus eventBus, final MyView view,
-			final MyProxy proxy, final PlaceManager placeManager) {
-		super(eventBus, view, proxy);
-
-		this.placeManager = placeManager;
+			final MyProxy proxy) {
+		super(eventBus, view, proxy, TYPE_SetTabContent, TYPE_RequestTabs);
 	}
 
 	@Override
 	protected void revealInParent() {
 		RevealRootContentEvent.fire(this, this);
-	}
-
-	@Override
-	protected void onBind() {
-		super.onBind();
-		registerHandler(getView().getSendClickHandlers().addClickHandler(
-				new ClickHandler() {
-					@Override
-					public void onClick(ClickEvent event) {
-						sendNameToServer();
-					}
-				}));
-	}
-
-	@Override
-	protected void onReset() {
-		super.onReset();
-		getView().resetAndFocus();
-	}
-
-	/**
-	 * Send the name from the nameField to the server and wait for a response.
-	 */
-	private void sendNameToServer() {
-		// First, we validate the input.
-		getView().setError("");
-		String textToServer = getView().getNameValue().getValue();
-		if (!FieldVerifier.isValidName(textToServer)) {
-			getView().setError("Please enter at least four characters");
-			return;
-		}
-	
-		// Then, we transmit it to the ResponsePresenter, which will do the server call
-		placeManager.revealPlace(new PlaceRequest(NameTokens.response).with(
-				ResponsePresenter.textToServerParam, textToServer));
 	}
 }
