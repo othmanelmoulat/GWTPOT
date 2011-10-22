@@ -8,7 +8,7 @@
 			padding: 5px;
 		}
 	</ui:style>
-	<ui:with type="com.fountainhead.client.NameTokens" field="nameTokens" />
+	<ui:with type="com.fountainhead.client.place.NameTokens" field="nameTokens" />
 
 
 	<g:HTMLPanel addStyleNames="{style.panel}">

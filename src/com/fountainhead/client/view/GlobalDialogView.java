@@ -38,7 +38,7 @@ import com.gwtplatform.mvp.client.PopupViewImpl;
 public class GlobalDialogView extends PopupViewImpl implements MyView {
 
 	/**
-   */
+	 */
 	public interface Binder extends UiBinder<PopupPanel, GlobalDialogView> {
 	}
 

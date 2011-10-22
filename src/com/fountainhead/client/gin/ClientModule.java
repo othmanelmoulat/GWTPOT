@@ -1,26 +1,13 @@
-/**
- * Copyright 2011 ArcBees Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License"); you may not
- * use this file except in compliance with the License. You may obtain a copy of
- * the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
- * License for the specific language governing permissions and limitations under
- * the License.
- */
-
 package com.fountainhead.client.gin;
 
-import com.fountainhead.client.CurrentUser;
-import com.fountainhead.client.GwtptabsamplePlaceManager;
-import com.fountainhead.client.IsAdminGatekeeper;
-import com.fountainhead.client.MyConstants;
-import com.fountainhead.client.NameTokens;
+
+import com.fountainhead.client.core.AdminGatekeeper;
+import com.fountainhead.client.core.IsAdminGatekeeper;
+import com.fountainhead.client.core.LoggedInGatekeeper;
+import com.fountainhead.client.core.MyConstants;
+import com.fountainhead.client.place.ClientPlaceManager;
+import com.fountainhead.client.place.DefaultPlace;
+import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.presenter.AdminAreaPresenter;
 import com.fountainhead.client.presenter.DialogSamplePresenter;
 import com.fountainhead.client.presenter.GlobalDialogPresenterWidget;
@@ -29,10 +16,9 @@ import com.fountainhead.client.presenter.HomeNewsPresenter;
 import com.fountainhead.client.presenter.HomePresenter;
 import com.fountainhead.client.presenter.InfoPopupPresenterWidget;
 import com.fountainhead.client.presenter.LocalDialogPresenterWidget;
-import com.fountainhead.client.presenter.LoginPresenter;
 import com.fountainhead.client.presenter.MainPagePresenter;
-import com.fountainhead.client.presenter.MyLoginPresenter;
 import com.fountainhead.client.presenter.SettingsPresenter;
+import com.fountainhead.client.presenter.SignInPagePresenter;
 import com.fountainhead.client.view.AdminAreaView;
 import com.fountainhead.client.view.DialogSampleView;
 import com.fountainhead.client.view.GlobalDialogView;
@@ -41,34 +27,47 @@ import com.fountainhead.client.view.HomeNewsView;
 import com.fountainhead.client.view.HomeView;
 import com.fountainhead.client.view.InfoPopupView;
 import com.fountainhead.client.view.LocalDialogView;
-import com.fountainhead.client.view.LoginView;
 import com.fountainhead.client.view.MainPageView;
-import com.fountainhead.client.view.MyLoginView;
 import com.fountainhead.client.view.SettingsView;
+import com.fountainhead.client.view.SignInPageView;
 import com.google.inject.Singleton;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
 
-/**
- * @author Christian Goudreau
- */
 public class ClientModule extends AbstractPresenterModule {
+
 	@Override
 	protected void configure() {
-		// Default implementation of standard resources
-		install(new DefaultModule(GwtptabsamplePlaceManager.class));
+		install(new DefaultModule(ClientPlaceManager.class));
+
+		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
+				MainPageView.class, MainPagePresenter.MyProxy.class);
 
 		bind(MyConstants.class).in(Singleton.class);
-		bind(CurrentUser.class).in(Singleton.class);
+		// bind(CurrentUser.class).in(Singleton.class);
 		bind(IsAdminGatekeeper.class).in(Singleton.class);
 
 		// Constants
+		bind(LoggedInGatekeeper.class).in(Singleton.class);
+		bind(AdminGatekeeper.class).in(Singleton.class);
+
+		// Constants
+		// Bind the Sign In page to the default place
 		bindConstant().annotatedWith(DefaultPlace.class).to(
-				NameTokens.homeNewsPage);
+				NameTokens.signInPage);
 
 		// Presenters
-		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
-				MainPageView.class, MainPagePresenter.MyProxy.class);
+
+		// Presenters
+
+		// Sign In
+		bindPresenter(SignInPagePresenter.class,
+				SignInPagePresenter.MyView.class, SignInPageView.class,
+				SignInPagePresenter.MyProxy.class);
+		// Presenters
+		// bindPresenter(MainPagePresenter.class,
+		// MainPagePresenter.MyView.class,
+		// MainPageView.class, MainPagePresenter.MyProxy.class);
 		bindPresenter(HomePresenter.class, HomePresenter.MyView.class,
 				HomeView.class, HomePresenter.MyProxy.class);
 		bindPresenter(DialogSamplePresenter.class,
@@ -79,8 +78,7 @@ public class ClientModule extends AbstractPresenterModule {
 		bindPresenter(AdminAreaPresenter.class,
 				AdminAreaPresenter.MyView.class, AdminAreaView.class,
 				AdminAreaPresenter.MyProxy.class);
-		bindPresenter(LoginPresenter.class, LoginPresenter.MyView.class,
-				LoginView.class, LoginPresenter.MyProxy.class);
+
 		bindPresenter(HomeNewsPresenter.class, HomeNewsPresenter.MyView.class,
 				HomeNewsView.class, HomeNewsPresenter.MyProxy.class);
 		bindPresenter(HomeInfoPresenter.class, HomeInfoPresenter.MyView.class,
@@ -93,7 +91,5 @@ public class ClientModule extends AbstractPresenterModule {
 				GlobalDialogPresenterWidget.MyView.class,
 				GlobalDialogView.class);
 
-		bindPresenter(MyLoginPresenter.class, MyLoginPresenter.MyView.class,
-				MyLoginView.class, MyLoginPresenter.MyProxy.class);
 	}
 }

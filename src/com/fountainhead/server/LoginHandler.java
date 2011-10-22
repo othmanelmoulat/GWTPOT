@@ -19,11 +19,10 @@ package com.fountainhead.server;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
-import com.fountainhead.client.CurrentUser;
+import com.fountainhead.shared.CurrentUser;
 import com.fountainhead.shared.FieldVerifier;
 import com.fountainhead.shared.LoginAction;
 import com.fountainhead.shared.LoginResult;
-import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.gwtplatform.dispatch.server.ExecutionContext;
@@ -48,35 +47,54 @@ public class LoginHandler implements ActionHandler<LoginAction, LoginResult> {
 
 		String username = action.getUsername();
 		String password = action.getPassword();
-		EventBus eventBus = action.getEventBus();
+		// EventBus eventBus = action.getEventBus();
 
 		// Verify that the input is valid.
-		if (!FieldVerifier.isValidName(username)) {
+		if (!FieldVerifier.isValidUserName(username)) {
 			// If the input is not valid, throw an IllegalArgumentException back
 			// to
 			// the client.
 			System.out.println("Exception!");
 			throw new ActionException("Name must be at least 4 characters long");
 		}
+		if (!FieldVerifier.isValidPassword(password)) {
+			// If the input is not valid, throw an IllegalArgumentException back
+			// to
+			// the client.
+			System.out.println("Exception!");
+			throw new ActionException(
+					" Passwords must contain at least 8 characters with at least one digit,one upper case letter, one lower case letter and one special symbol ");
+		}
 
-		CurrentUser user = isUserValid(username, password, eventBus);
-
+		CurrentUser user = isUserValid(username, password);
+		if (user == null) {
+			// If the input is not valid, throw an IllegalArgumentException back
+			// to
+			// the client.
+			System.out.println("Exception!");
+			throw new ActionException(
+					"Invalid username and/or Password");
+		}
 		return new LoginResult(user);
 	}
 
 	/* This method should be using spring-security or something like that */
-	private CurrentUser isUserValid(String username, String password,
-			EventBus eventBus) {
+	private CurrentUser isUserValid(String username, String password) {
 
 		CurrentUser user = null;
 
-		if ("admin".equals(username) && "admin".equals(password)) {
-			user = new CurrentUser(eventBus);
-			user.setAdmin(true);
+		if ("administrator".equals(username)
+				&& "administrator".equals(password)) {
+			user = new CurrentUser();
+			user.setLogin(username);
+			user.setLoggedIn(true);
+			user.setAdministrator(true);
 
 		} else if ("user".equals(username) && "user".equals(password)) {
-			user = new CurrentUser(eventBus);
-			user.setAdmin(false);
+			user = new CurrentUser();
+			user.setLogin(username);
+			user.setLoggedIn(true);
+			user.setAdministrator(false);
 
 		}
 

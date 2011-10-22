@@ -16,9 +16,9 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.CurrentUser;
-import com.fountainhead.client.NameTokens;
+import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.view.SettingsUiHandlers;
+import com.fountainhead.shared.CurrentUser;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -40,10 +40,10 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * @author Philippe Beaudoin
  */
 public class SettingsPresenter
-		extends
-			Presenter<SettingsPresenter.MyView, SettingsPresenter.MyProxy>
-		implements
-			SettingsUiHandlers {
+extends
+Presenter<SettingsPresenter.MyView, SettingsPresenter.MyProxy>
+implements
+SettingsUiHandlers {
 	/**
 	 * {@link SettingsPresenter}'s proxy.
 	 */
@@ -84,11 +84,11 @@ public class SettingsPresenter
 
 	@Override
 	public void togglePrivileges() {
-		currentUser.setAdmin(!currentUser.isAdmin());
+		currentUser.setAdministrator(!currentUser.isAdministrator());
 		updateView();
 	}
 
 	private void updateView() {
-		getView().setAdmin(currentUser.isAdmin());
+		getView().setAdmin(currentUser.isAdministrator());
 	}
 }

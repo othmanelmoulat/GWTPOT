@@ -16,7 +16,7 @@
 
 package com.fountainhead.client.ui;
 
-import com.fountainhead.client.TabDataExt;
+import com.fountainhead.client.core.TabDataExt;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;

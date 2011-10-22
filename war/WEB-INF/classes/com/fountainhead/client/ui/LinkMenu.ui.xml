@@ -2,7 +2,7 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
 	xmlns:g="urn:import:com.google.gwt.user.client.ui">
 
-	<ui:with type="com.fountainhead.client.NameTokens" field="nameTokens" />
+	<ui:with type="com.fountainhead.client.place.NameTokens" field="nameTokens" />
 
 	<g:HTMLPanel>
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getHomeNewsPage}">Home</g:InlineHyperlink> | 

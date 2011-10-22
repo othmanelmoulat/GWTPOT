@@ -16,7 +16,6 @@
 
 package com.fountainhead.shared;
 
-import com.google.gwt.event.shared.EventBus;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
 
@@ -27,11 +26,11 @@ import com.gwtplatform.dispatch.shared.UnsecuredActionImpl;
  */
 public class LoginAction extends UnsecuredActionImpl<LoginResult> {
 
-	private static final long serialVersionUID = 4621412923270714515L;
+	// private static final long serialVersionUID = 4621412923270714515L;
 
 	private String username;
 	private String password;
-	private EventBus eventBus;
+	// private EventBus eventBus;
 
 	/**
 	 * For serialization only.
@@ -40,11 +39,10 @@ public class LoginAction extends UnsecuredActionImpl<LoginResult> {
 	private LoginAction() {
 	}
 
-	public LoginAction(final String username, final String password,
-			EventBus eventBus) {
+	public LoginAction(final String username, final String password) {
 		this.username = username;
 		this.password = password;
-		this.eventBus = eventBus;
+
 	}
 
 	public String getUsername() {
@@ -55,11 +53,6 @@ public class LoginAction extends UnsecuredActionImpl<LoginResult> {
 		return password;
 	}
 
-	/**
-	 * @return the eventBus
-	 */
-	public EventBus getEventBus() {
-		return eventBus;
-	}
+
 
 }

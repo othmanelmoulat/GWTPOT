@@ -16,7 +16,7 @@
 
 package com.fountainhead.shared;
 
-import com.fountainhead.client.CurrentUser;
+
 import com.gwtplatform.dispatch.shared.Result;
 
 /**
@@ -24,7 +24,7 @@ import com.gwtplatform.dispatch.shared.Result;
  */
 public class LoginResult implements Result {
 
-	private static final long serialVersionUID = 4621412923270714515L;
+	// private static final long serialVersionUID = 4621412923270714515L;
 
 	private CurrentUser response;
 

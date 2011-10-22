@@ -16,8 +16,8 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.NameTokens;
 import com.fountainhead.client.gin.ClientGinjector;
+import com.fountainhead.client.place.NameTokens;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.Presenter;
@@ -42,13 +42,14 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * @author Philippe Beaudoin
  */
 public class HomeNewsPresenter
-		extends
-			Presenter<HomeNewsPresenter.MyView, HomeNewsPresenter.MyProxy> {
+extends
+Presenter<HomeNewsPresenter.MyView, HomeNewsPresenter.MyProxy> {
 	/**
 	 * {@link HomeNewsPresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
 	@NameToken(NameTokens.homeNewsPage)
+	// @UseGatekeeper(IsAdminGatekeeper.class)
 	public interface MyProxy extends TabContentProxyPlace<HomeNewsPresenter> {
 	}
 
@@ -100,7 +101,7 @@ public class HomeNewsPresenter
 		this.confirmationEnabled = enabled;
 		if (enabled) {
 			placeManager
-					.setOnLeaveConfirmation("Are you sure you want to navigate away from this page?");
+			.setOnLeaveConfirmation("Are you sure you want to navigate away from this page?");
 			getView().setConfirmationText(
 					"Navigation confirmation ON, click here to disable it!");
 		} else {

@@ -36,11 +36,11 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
  * @author Christian Goudreau
  */
 public class DialogSampleView
-		extends
-			ViewWithUiHandlers<DialogSampleUiHandlers> implements MyView {
+extends
+ViewWithUiHandlers<DialogSampleUiHandlers> implements MyView {
 
 	/**
-   */
+	 */
 	public interface Binder extends UiBinder<Widget, DialogSampleView> {
 	}
 

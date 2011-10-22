@@ -16,8 +16,9 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.NameTokens;
+import com.fountainhead.client.core.AdminGatekeeper;
 import com.fountainhead.client.gin.ClientGinjector;
+import com.fountainhead.client.place.NameTokens;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
@@ -27,6 +28,7 @@ import com.gwtplatform.mvp.client.TabView;
 import com.gwtplatform.mvp.client.annotations.ProxyCodeSplit;
 import com.gwtplatform.mvp.client.annotations.RequestTabs;
 import com.gwtplatform.mvp.client.annotations.TabInfo;
+import com.gwtplatform.mvp.client.annotations.UseGatekeeper;
 import com.gwtplatform.mvp.client.proxy.RevealContentEvent;
 import com.gwtplatform.mvp.client.proxy.TabContentProxy;
 
@@ -44,19 +46,20 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxy;
  * @author Philippe Beaudoin
  */
 public class HomePresenter
-		extends
-			HomePresenterBase<HomePresenter.MyView, HomePresenter.MyProxy> {
+extends
+HomePresenterBase<HomePresenter.MyView, HomePresenter.MyProxy> {
 	/**
 	 * {@link HomePresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
+	@UseGatekeeper(AdminGatekeeper.class)
 	public interface MyProxy extends TabContentProxy<HomePresenter> {
 	}
 
 	@TabInfo(container = MainPagePresenter.class, priority = 0, // The first tab
-																// in the main
-																// page
-	nameToken = NameTokens.homeNewsPage)
+			// in the main
+			// page
+			nameToken = NameTokens.homeNewsPage)
 	// Go to HomeNewsPresenter when clicked
 	static String getTabLabel(ClientGinjector ginjector) {
 		return ginjector.getMyConstants().home();

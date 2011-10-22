@@ -16,7 +16,7 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.NameTokens;
+import com.fountainhead.client.place.NameTokens;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.Presenter;

@@ -16,10 +16,11 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.IsAdminGatekeeper;
-import com.fountainhead.client.NameTokens;
-import com.fountainhead.client.TabDataExt;
+import com.fountainhead.client.core.AdminGatekeeper;
+import com.fountainhead.client.core.IsAdminGatekeeper;
+import com.fountainhead.client.core.TabDataExt;
 import com.fountainhead.client.gin.ClientGinjector;
+import com.fountainhead.client.place.NameTokens;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.Presenter;
@@ -47,14 +48,14 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * @author Philippe Beaudoin
  */
 public class AdminAreaPresenter
-		extends
-			Presenter<AdminAreaPresenter.MyView, AdminAreaPresenter.MyProxy> {
+extends
+Presenter<AdminAreaPresenter.MyView, AdminAreaPresenter.MyProxy> {
 	/**
 	 * {@link AdminAreaPresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
 	@NameToken(NameTokens.adminPage)
-	@UseGatekeeper(IsAdminGatekeeper.class)
+	@UseGatekeeper(AdminGatekeeper.class)
 	public interface MyProxy extends TabContentProxyPlace<AdminAreaPresenter> {
 	}
 
@@ -62,7 +63,7 @@ public class AdminAreaPresenter
 	static TabData getTabLabel(ClientGinjector ginjector) {
 		// Priority = 1000, means it will be the right-most tab in the home tab
 		return new TabDataExt("Admin area", 1000,
-				ginjector.getIsAdminGatekeeper());
+				ginjector.getAdminGatekeeper());
 	}
 
 	/**

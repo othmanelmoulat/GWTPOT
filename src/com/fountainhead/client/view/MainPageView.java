@@ -37,7 +37,7 @@ import com.gwtplatform.mvp.client.ViewImpl;
 public class MainPageView extends ViewImpl implements MainPagePresenter.MyView {
 
 	/**
-   */
+	 */
 	public interface Binder extends UiBinder<Widget, MainPageView> {
 	}
 
