@@ -16,9 +16,10 @@ import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
 import com.gwtplatform.mvp.client.annotations.NameToken;
 import com.gwtplatform.mvp.client.annotations.ProxyStandard;
+import com.gwtplatform.mvp.client.proxy.Place;
 import com.gwtplatform.mvp.client.proxy.PlaceManager;
 import com.gwtplatform.mvp.client.proxy.PlaceRequest;
-import com.gwtplatform.mvp.client.proxy.ProxyPlace;
+import com.gwtplatform.mvp.client.proxy.Proxy;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 
 public class MyLoginPresenter
@@ -42,7 +43,7 @@ Presenter<MyLoginPresenter.MyView, MyLoginPresenter.MyProxy> {
 
 	@ProxyStandard
 	@NameToken(NameTokens.myloginpage)
-	public interface MyProxy extends ProxyPlace<MyLoginPresenter> {
+	public interface MyProxy extends Proxy<MyLoginPresenter>, Place {
 	}
 
 	@Inject

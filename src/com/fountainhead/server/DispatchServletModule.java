@@ -24,8 +24,11 @@ public class DispatchServletModule extends ServletModule {
 
 	@Override
 	public void configureServlets() {
-		serve("/gwtptabsample/" + ActionImpl.DEFAULT_SERVICE_NAME).with(
+		// serve("/gwtptabsample/" + ActionImpl.DEFAULT_SERVICE_NAME).with(
+		// DispatchServiceImpl.class);
+		serve("/" + ActionImpl.DEFAULT_SERVICE_NAME + "*").with(
 				DispatchServiceImpl.class);
+
 	}
 
 }

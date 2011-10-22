@@ -29,7 +29,7 @@ import com.google.inject.Inject;
  */
 public class CurrentUser implements HasHandlers {
 
-	private boolean isAdmin = true;
+	private boolean isAdmin = false;
 
 	private final EventBus eventBus;
 

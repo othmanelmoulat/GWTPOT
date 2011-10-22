@@ -49,13 +49,13 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
  * @author Philippe Beaudoin
  */
 public class MainPagePresenter
-		extends
-			TabContainerPresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
-		implements
-			CurrentUserChangedHandler,
-			AsyncCallStartHandler,
-			AsyncCallFailHandler,
-			AsyncCallSucceedHandler {
+extends
+TabContainerPresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
+implements
+CurrentUserChangedHandler,
+AsyncCallStartHandler,
+AsyncCallFailHandler,
+AsyncCallSucceedHandler {
 
 	/**
 	 * {@link MainPagePresenter}'s proxy.

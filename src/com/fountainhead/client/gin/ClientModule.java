@@ -64,7 +64,7 @@ public class ClientModule extends AbstractPresenterModule {
 
 		// Constants
 		bindConstant().annotatedWith(DefaultPlace.class).to(
-				NameTokens.myloginpage);
+				NameTokens.homeNewsPage);
 
 		// Presenters
 		bindPresenter(MainPagePresenter.class, MainPagePresenter.MyView.class,
