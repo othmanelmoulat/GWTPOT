@@ -16,7 +16,7 @@
 
 package com.fountainhead.client.presenter;
 
-import com.fountainhead.client.core.AdminGatekeeper;
+import com.fountainhead.client.core.LoggedInGatekeeper;
 import com.fountainhead.client.gin.ClientGinjector;
 import com.fountainhead.client.place.NameTokens;
 import com.google.gwt.event.shared.EventBus;
@@ -52,7 +52,7 @@ HomePresenterBase<HomePresenter.MyView, HomePresenter.MyProxy> {
 	 * {@link HomePresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
-	@UseGatekeeper(AdminGatekeeper.class)
+	@UseGatekeeper(LoggedInGatekeeper.class)
 	public interface MyProxy extends TabContentProxy<HomePresenter> {
 	}
 

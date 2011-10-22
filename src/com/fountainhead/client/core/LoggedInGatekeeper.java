@@ -35,8 +35,8 @@ public class LoggedInGatekeeper implements Gatekeeper {
 
 				currentUser = event.getCurrentUser();
 
-						// Log.debug(currentUser.getLogin() +
-						// " credentials have been authenticated.");
+				// Log.debug(currentUser.getLogin() +
+				// " credentials have been authenticated.");
 			}
 		});
 	}
@@ -51,4 +51,12 @@ public class LoggedInGatekeeper implements Gatekeeper {
 
 		return loggedIn;
 	}
+
+	/**
+	 * @return the currentUser
+	 */
+	public CurrentUser getCurrentUser() {
+		return currentUser;
+	}
+
 }

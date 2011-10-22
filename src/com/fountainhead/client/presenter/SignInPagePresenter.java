@@ -117,10 +117,12 @@ SignInPageUiHandlers {
 				user.setLoggedIn(result.getResponse().isLoggedIn());
 				user.setAdministrator(result.getResponse()
 						.isAdministrator());
-						LoginAuthenticatedEvent.fire(eventBus, user);
+				LoginAuthenticatedEvent.fire(eventBus, user);
 
 				PlaceRequest placeRequest = new PlaceRequest(
-						NameTokens.homeNewsPage);
+								NameTokens.settingsPage);
+						// .with("username",
+						// user.getLogin());
 				getPlaceManager().revealPlace(placeRequest);
 
 				// Log.debug("onSuccess() - " + result.getSessionKey());

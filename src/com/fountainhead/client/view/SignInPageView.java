@@ -53,12 +53,16 @@ SignInPagePresenter.MyView {
 			+ "    <td id=\"signInButtonContainer\"></td>\n"
 			+ "  </tr>\n"
 			+ "  <tr>\n" + "<td>&nbsp;</td>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
+			+ "</table>\n"
+			+ "</div>\n"
+			+ "<div  align=\"center\" style=\"color:red;\" id=\"errorLabelContainer\">\n"
 			// + "  <tr>\n"
 			// + "    <td colspan=\"2\">Forget your password?</td>\n"
 			// + "  </tr>\n"
-			+ "  <tr>\n"
-			+ "    <td colspan=\"2\" style=\"color:red;\" id=\"errorLabelContainer\"></td>\n"
-			+ "  </tr>\n" + "</table>\n"
+			// + "  <tr>\n"
+			// +
+			// "    <td colspan=\"2\" style=\"color:red;\" id=\"errorLabelContainer\"></td>\n"
+			// + "  </tr>\n" + "</table>\n"
 			+ "</div>\n";
 
 	private final HTMLPanel panel;

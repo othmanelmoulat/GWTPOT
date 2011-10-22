@@ -2,11 +2,18 @@
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
     xmlns:g="urn:import:com.google.gwt.user.client.ui" xmlns:npui="urn:import:com.fountainhead.client.ui">
 
-    <ui:style>
+    <ui:style src='../../defines.css'>
         .topMessage {
           background-color: yellow;
           padding: 5px;
           font-weight: bold;
+        }
+ .username {
+          background-color: darkPanelColor;
+          padding: 5px;
+          font-weight: bold;
+		// float: left; 
+	     
         }
     </ui:style>
 
@@ -17,6 +24,8 @@
             </div>
         </div>
         <div style="margin: 10px 3px 0;">
+        <div class="{style.username}" >Logged in as: <g:InlineLabel ui:field="userName" styleName="{style.username}"/></div>
+        <br/>
             <npui:RoundTabPanel ui:field="tabPanel" />
             <npui:LinkMenu />
         </div>

@@ -35,8 +35,8 @@ public class AdminGatekeeper implements Gatekeeper {
 
 				currentUser = event.getCurrentUser();
 
-						// Log.debug(currentUser.getLogin() +
-						// " credentials have been authenticated.");
+				// Log.debug(currentUser.getLogin() +
+				// " credentials have been authenticated.");
 			}
 		});
 	}
@@ -50,5 +50,13 @@ public class AdminGatekeeper implements Gatekeeper {
 		}
 
 		return administrator;
+	}
+
+	/**
+	 * @return the currentUser
+	 */
+	public CurrentUser getCurrentUser() {
+		return currentUser;
 	}    
+
 }

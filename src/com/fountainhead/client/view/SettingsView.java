@@ -34,11 +34,11 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
  * @author Christian Goudreau
  */
 public class SettingsView extends ViewWithUiHandlers<SettingsUiHandlers>
-		implements
-			SettingsPresenter.MyView {
+implements
+SettingsPresenter.MyView {
 
 	/**
-   */
+	 */
 	public interface Binder extends UiBinder<Widget, SettingsView> {
 	}
 
@@ -76,4 +76,11 @@ public class SettingsView extends ViewWithUiHandlers<SettingsUiHandlers>
 	void onSwitchSecurityClicked(ClickEvent event) {
 		getUiHandlers().togglePrivileges();
 	}
+
+	@Override
+	public void setUserName(String username) {
+		this.userPrivileges.setText(username);
+
+	}
+
 }

@@ -19,6 +19,7 @@ package com.fountainhead.client.presenter;
 import com.fountainhead.client.core.CurrentUserChangedEvent;
 import com.fountainhead.client.core.CurrentUserChangedEvent.CurrentUserChangedHandler;
 import com.fountainhead.client.place.NameTokens;
+import com.fountainhead.shared.CurrentUser;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.event.shared.GwtEvent.Type;
 import com.google.inject.Inject;
@@ -52,12 +53,12 @@ import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
  */
 public class MainPagePresenter
 extends
-			TabContainerPresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
-		implements
-			CurrentUserChangedHandler,
-			AsyncCallStartHandler,
-			AsyncCallFailHandler,
-			AsyncCallSucceedHandler {
+TabContainerPresenter<MainPagePresenter.MyView, MainPagePresenter.MyProxy>
+implements
+CurrentUserChangedHandler,
+AsyncCallStartHandler,
+AsyncCallFailHandler,
+AsyncCallSucceedHandler {
 
 	/**
 	 * {@link MainPagePresenter}'s proxy.
@@ -73,6 +74,7 @@ extends
 	public interface MyView extends TabView {
 		void refreshTabs();
 		void setTopMessage(String string);
+		void setUsername(String username);
 	}
 
 	/**
@@ -87,16 +89,29 @@ extends
 	 */
 	@ContentSlot
 	public static final Type<RevealContentHandler<?>> TYPE_SetTabContent = new Type<RevealContentHandler<?>>();
-
+	private final CurrentUser currentUser;
 	@Inject
 	public MainPagePresenter(final EventBus eventBus, final MyView view,
-			final MyProxy proxy) {
+			final MyProxy proxy, CurrentUser currentUser) {
 		super(eventBus, view, proxy, TYPE_SetTabContent, TYPE_RequestTabs);
+		this.currentUser = currentUser;
 	}
 
 	@Override
 	protected void revealInParent() {
 		RevealRootContentEvent.fire(this, this);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.gwtplatform.mvp.client.PresenterWidget#onReveal()
+	 */
+	@Override
+	protected void onReveal() {
+		// TODO Auto-generated method stub
+		super.onReveal();
+		getView().setUsername(currentUser.getLogin());
 	}
 
 	@ProxyEvent

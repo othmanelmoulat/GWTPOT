@@ -5,6 +5,7 @@
 	<ui:with type="com.fountainhead.client.place.NameTokens" field="nameTokens" />
 
 	<g:HTMLPanel>
+<!-- 	    <p>Currently logged in as: <g:InlineLabel ui:field="userPrivileges"/></p> -->
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getHomeNewsPage}">Home</g:InlineHyperlink> | 
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getDialogSamplePage}">Dialogs</g:InlineHyperlink> | 
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getSettingsPage}">Settings</g:InlineHyperlink>

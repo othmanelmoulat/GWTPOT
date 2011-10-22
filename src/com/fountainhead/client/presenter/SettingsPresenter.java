@@ -59,6 +59,7 @@ SettingsUiHandlers {
 	 */
 	public interface MyView extends View, HasUiHandlers<SettingsUiHandlers> {
 		void setAdmin(boolean isAdmin);
+		void setUserName(String username);
 	}
 
 	private final CurrentUser currentUser;
@@ -89,6 +90,9 @@ SettingsUiHandlers {
 	}
 
 	private void updateView() {
+		System.out.println(currentUser.getLogin());
+		System.out.println("isAdmin="+currentUser.isAdministrator());
 		getView().setAdmin(currentUser.isAdministrator());
+		getView().setUserName(currentUser.getLogin());
 	}
 }

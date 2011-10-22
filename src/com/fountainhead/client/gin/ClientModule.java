@@ -30,6 +30,7 @@ import com.fountainhead.client.view.LocalDialogView;
 import com.fountainhead.client.view.MainPageView;
 import com.fountainhead.client.view.SettingsView;
 import com.fountainhead.client.view.SignInPageView;
+import com.fountainhead.shared.CurrentUser;
 import com.google.inject.Singleton;
 import com.gwtplatform.mvp.client.gin.AbstractPresenterModule;
 import com.gwtplatform.mvp.client.gin.DefaultModule;
@@ -44,7 +45,7 @@ public class ClientModule extends AbstractPresenterModule {
 				MainPageView.class, MainPagePresenter.MyProxy.class);
 
 		bind(MyConstants.class).in(Singleton.class);
-		// bind(CurrentUser.class).in(Singleton.class);
+		bind(CurrentUser.class).in(Singleton.class);
 		bind(IsAdminGatekeeper.class).in(Singleton.class);
 
 		// Constants

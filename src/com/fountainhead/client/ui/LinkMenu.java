@@ -45,7 +45,7 @@ import com.google.inject.Inject;
 public class LinkMenu extends Composite {
 
 	/**
-   */
+	 */
 	public interface Binder extends UiBinder<Widget, LinkMenu> {
 	}
 

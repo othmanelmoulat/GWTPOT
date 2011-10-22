@@ -49,6 +49,9 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.MyView {
 	@UiField
 	InlineLabel topMessage;
 
+	@UiField
+	InlineLabel userName;
+
 	@Inject
 	public MainPageView(Binder uiBinder) {
 		widget = uiBinder.createAndBindUi(this);
@@ -102,5 +105,11 @@ public class MainPageView extends ViewImpl implements MainPagePresenter.MyView {
 			topMessage.setVisible(true);
 			topMessage.setText(string);
 		}
+	}
+
+	@Override
+	public void setUsername(String username) {
+		userName.setText(username);
+
 	}
 }
