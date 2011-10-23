@@ -52,7 +52,7 @@ public class JSONTreeLoader {
 			for (Iterator iter = keys.iterator(); iter.hasNext();) {
 				String key = (String) iter.next();
 				if (key.equals("text")) {
-					String text = getChildText(jsonObject.get(key).isString()
+					String text = (jsonObject.get(key).isString()
 							.stringValue());
 					item = treeItem.addItem(text);
 					addChildren(item, jsonObject.get(key));

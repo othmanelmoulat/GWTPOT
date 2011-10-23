@@ -18,11 +18,14 @@ package com.fountainhead.client.view;
 
 import com.fountainhead.client.presenter.ReportPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Tree;
+import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -33,9 +36,11 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
  * 
 
  */
+@SuppressWarnings("rawtypes")
 public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 implements
-ReportPresenter.MyView {
+ReportPresenter.MyView,
+SelectionHandler {
 
 	/**
 	 */
@@ -47,6 +52,7 @@ ReportPresenter.MyView {
 	@Inject
 	public ReportView(Binder uiBinder) {
 		widget = uiBinder.createAndBindUi(this);
+		itemsTree.addSelectionHandler(this);
 	}
 
 	@Override
@@ -92,5 +98,25 @@ ReportPresenter.MyView {
 	public Tree getTree() {
 		// TODO Auto-generated method stub
 		return this.itemsTree;
+	}
+
+	@Override
+	public void onSelection(SelectionEvent event) {
+		TreeItem treeItem = (TreeItem) event.getSelectedItem();
+		String selectedItem = treeItem.getText();
+		if (!containsItem(selectedItem))
+			itemsList.addItem(selectedItem);
+
+	}
+	private boolean containsItem(String item) {
+		boolean found = false;
+		for (int i = 0; i < itemsList.getItemCount(); i++) {
+			if (item.equals(itemsList.getItemText(i))) {
+				found = true;
+				break;
+			}
+		}
+		return found;
+
 	}
 }
