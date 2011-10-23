@@ -1,8 +1,10 @@
 package com.fountainhead.server.guice;
 
 
+import com.fountainhead.server.LoadTreeHandler;
 import com.fountainhead.server.LoginHandler;
 import com.fountainhead.server.SendTextToServerActionHandler;
+import com.fountainhead.shared.LoadTreeAction;
 import com.fountainhead.shared.LoginAction;
 import com.fountainhead.shared.SendTextToServer;
 import com.gwtplatform.dispatch.server.guice.HandlerModule;
@@ -14,5 +16,6 @@ public class ServerModule extends HandlerModule {
 
 		bindHandler(SendTextToServer.class, SendTextToServerActionHandler.class);
 		bindHandler(LoginAction.class, LoginHandler.class);
+		bindHandler(LoadTreeAction.class, LoadTreeHandler.class);
 	}
 }

@@ -87,4 +87,10 @@ ReportPresenter.MyView {
 
 	void onButtonClick(ClickEvent event) {
 	}
+
+	@Override
+	public Tree getTree() {
+		// TODO Auto-generated method stub
+		return this.itemsTree;
+	}
 }
