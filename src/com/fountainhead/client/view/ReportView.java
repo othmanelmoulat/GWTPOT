@@ -34,13 +34,12 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
  * The view implementation for
  * {@link com.fountainhead.client.presenter.ReportPresenter}.
  * 
-
  */
 @SuppressWarnings("rawtypes")
 public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
-implements
-ReportPresenter.MyView,
-SelectionHandler {
+		implements
+			ReportPresenter.MyView,
+			SelectionHandler {
 
 	/**
 	 */
@@ -84,8 +83,10 @@ SelectionHandler {
 	Button button2;
 	@UiField
 	Button button3;
-	@UiField Button saveButton;
-	@UiField Button runButton;
+	@UiField
+	Button saveButton;
+	@UiField
+	Button runButton;
 	@UiField
 	ListBox itemsList;
 	@UiField
@@ -97,7 +98,7 @@ SelectionHandler {
 	@Override
 	public Tree getTree() {
 		// TODO Auto-generated method stub
-		return this.itemsTree;
+		return itemsTree;
 	}
 
 	@Override
