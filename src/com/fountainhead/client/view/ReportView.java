@@ -16,7 +16,7 @@
 
 package com.fountainhead.client.view;
 
-import com.fountainhead.client.presenter.SettingsPresenter;
+import com.fountainhead.client.presenter.ReportPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -29,23 +29,23 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 
 /**
  * The view implementation for
- * {@link com.fountainhead.client.presenter.SettingsPresenter}.
+ * {@link com.fountainhead.client.presenter.ReportPresenter}.
  * 
  * @author Christian Goudreau
  */
-public class SettingsView extends ViewWithUiHandlers<SettingsUiHandlers>
+public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 implements
-SettingsPresenter.MyView {
+ReportPresenter.MyView {
 
 	/**
 	 */
-	public interface Binder extends UiBinder<Widget, SettingsView> {
+	public interface Binder extends UiBinder<Widget, ReportView> {
 	}
 
 	private final Widget widget;
 
 	@Inject
-	public SettingsView(Binder uiBinder) {
+	public ReportView(Binder uiBinder) {
 		widget = uiBinder.createAndBindUi(this);
 	}
 

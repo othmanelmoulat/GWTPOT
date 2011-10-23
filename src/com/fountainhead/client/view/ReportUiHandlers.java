@@ -19,10 +19,10 @@ package com.fountainhead.client.view;
 import com.gwtplatform.mvp.client.UiHandlers;
 
 /**
- * {@link SettingsView}'s {@link UiHandlers}.
+ * {@link ReportView}'s {@link UiHandlers}.
  * 
  * @author Philippe Beaudoin
  */
-public interface SettingsUiHandlers extends UiHandlers {
+public interface ReportUiHandlers extends UiHandlers {
 	void togglePrivileges();
 }

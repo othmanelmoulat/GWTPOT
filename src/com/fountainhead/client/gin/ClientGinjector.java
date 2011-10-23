@@ -12,7 +12,7 @@ import com.fountainhead.client.presenter.HomeInfoPresenter;
 import com.fountainhead.client.presenter.HomeNewsPresenter;
 import com.fountainhead.client.presenter.HomePresenter;
 import com.fountainhead.client.presenter.MainPagePresenter;
-import com.fountainhead.client.presenter.SettingsPresenter;
+import com.fountainhead.client.presenter.ReportPresenter;
 import com.fountainhead.client.presenter.SignInPagePresenter;
 import com.fountainhead.client.ui.LinkMenu;
 import com.fountainhead.client.ui.RoundTabPanel;
@@ -39,7 +39,7 @@ public interface ClientGinjector extends Ginjector {
 	IsAdminGatekeeper getIsAdminGatekeeper();
 	AsyncProvider<DialogSamplePresenter> getDialogSamplePresenter();
 	AsyncProvider<AdminAreaPresenter> getAdminAreaPresenter();
-	AsyncProvider<SettingsPresenter> getSettingsPresenter();
+	AsyncProvider<ReportPresenter> getSettingsPresenter();
 	AsyncProvider<HomeInfoPresenter> getHomeInfoPresenter();
 	AsyncProvider<HomeNewsPresenter> getHomeNewsPresenter();
 	LoggedInGatekeeper getLoggedInGatekeeper();

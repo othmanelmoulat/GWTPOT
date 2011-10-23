@@ -17,7 +17,7 @@ import com.fountainhead.client.presenter.HomePresenter;
 import com.fountainhead.client.presenter.InfoPopupPresenterWidget;
 import com.fountainhead.client.presenter.LocalDialogPresenterWidget;
 import com.fountainhead.client.presenter.MainPagePresenter;
-import com.fountainhead.client.presenter.SettingsPresenter;
+import com.fountainhead.client.presenter.ReportPresenter;
 import com.fountainhead.client.presenter.SignInPagePresenter;
 import com.fountainhead.client.view.AdminAreaView;
 import com.fountainhead.client.view.DialogSampleView;
@@ -28,7 +28,7 @@ import com.fountainhead.client.view.HomeView;
 import com.fountainhead.client.view.InfoPopupView;
 import com.fountainhead.client.view.LocalDialogView;
 import com.fountainhead.client.view.MainPageView;
-import com.fountainhead.client.view.SettingsView;
+import com.fountainhead.client.view.ReportView;
 import com.fountainhead.client.view.SignInPageView;
 import com.fountainhead.shared.CurrentUser;
 import com.google.inject.Singleton;
@@ -74,8 +74,8 @@ public class ClientModule extends AbstractPresenterModule {
 		bindPresenter(DialogSamplePresenter.class,
 				DialogSamplePresenter.MyView.class, DialogSampleView.class,
 				DialogSamplePresenter.MyProxy.class);
-		bindPresenter(SettingsPresenter.class, SettingsPresenter.MyView.class,
-				SettingsView.class, SettingsPresenter.MyProxy.class);
+		bindPresenter(ReportPresenter.class, ReportPresenter.MyView.class,
+				ReportView.class, ReportPresenter.MyProxy.class);
 		bindPresenter(AdminAreaPresenter.class,
 				AdminAreaPresenter.MyView.class, AdminAreaView.class,
 				AdminAreaPresenter.MyProxy.class);

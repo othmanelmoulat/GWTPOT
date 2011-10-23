@@ -17,7 +17,7 @@
 package com.fountainhead.client.presenter;
 
 import com.fountainhead.client.place.NameTokens;
-import com.fountainhead.client.view.SettingsUiHandlers;
+import com.fountainhead.client.view.ReportUiHandlers;
 import com.fountainhead.shared.CurrentUser;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
@@ -39,25 +39,25 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * @author Christian Goudreau
  * @author Philippe Beaudoin
  */
-public class SettingsPresenter
+public class ReportPresenter
 extends
-Presenter<SettingsPresenter.MyView, SettingsPresenter.MyProxy>
+Presenter<ReportPresenter.MyView, ReportPresenter.MyProxy>
 implements
-SettingsUiHandlers {
+ReportUiHandlers {
 	/**
-	 * {@link SettingsPresenter}'s proxy.
+	 * {@link ReportPresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
 	@NameToken(NameTokens.settingsPage)
 	@TabInfo(container = MainPagePresenter.class, label = "Report", priority = 1)
 	// The third tab in the main page
-	public interface MyProxy extends TabContentProxyPlace<SettingsPresenter> {
+	public interface MyProxy extends TabContentProxyPlace<ReportPresenter> {
 	}
 
 	/**
-	 * {@link SettingsPresenter}'s view.
+	 * {@link ReportPresenter}'s view.
 	 */
-	public interface MyView extends View, HasUiHandlers<SettingsUiHandlers> {
+	public interface MyView extends View, HasUiHandlers<ReportUiHandlers> {
 		void setAdmin(boolean isAdmin);
 		void setUserName(String username);
 	}
@@ -65,7 +65,7 @@ SettingsUiHandlers {
 	private final CurrentUser currentUser;
 
 	@Inject
-	public SettingsPresenter(final EventBus eventBus, final MyView view,
+	public ReportPresenter(final EventBus eventBus, final MyView view,
 			final MyProxy proxy, final CurrentUser currentUser) {
 		super(eventBus, view, proxy);
 		this.currentUser = currentUser;
