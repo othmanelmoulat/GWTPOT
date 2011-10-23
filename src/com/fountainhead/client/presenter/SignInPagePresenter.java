@@ -22,8 +22,10 @@ import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.view.SignInPageUiHandlers;
 import com.fountainhead.shared.CurrentUser;
 import com.fountainhead.shared.LoginAction;
+import com.fountainhead.shared.LoginException;
 import com.fountainhead.shared.LoginResult;
 import com.google.gwt.event.shared.EventBus;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
@@ -103,11 +105,14 @@ SignInPageUiHandlers {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				getView().setError(caught.getMessage());
-				// caught.printStackTrace(System.out);
-				getView().resetAndFocus();
-
-				// Log.debug(message);
+						if (caught instanceof LoginException) {
+							getView().setError(caught.getMessage());
+					getView().resetAndFocus();
+						} else {
+							caught.printStackTrace(System.err);
+							Window.alert("Caught unexpected Error:\n"
+									+ caught.toString());
+						}
 			}
 
 			@Override
@@ -120,9 +125,9 @@ SignInPageUiHandlers {
 				LoginAuthenticatedEvent.fire(eventBus, user);
 
 				PlaceRequest placeRequest = new PlaceRequest(
-								NameTokens.settingsPage);
-						// .with("username",
-						// user.getLogin());
+						NameTokens.settingsPage);
+				// .with("username",
+				// user.getLogin());
 				getPlaceManager().revealPlace(placeRequest);
 
 				// Log.debug("onSuccess() - " + result.getSessionKey());

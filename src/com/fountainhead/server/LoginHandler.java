@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.fountainhead.shared.CurrentUser;
 import com.fountainhead.shared.FieldVerifier;
 import com.fountainhead.shared.LoginAction;
+import com.fountainhead.shared.LoginException;
 import com.fountainhead.shared.LoginResult;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
@@ -51,7 +52,7 @@ public class LoginHandler implements ActionHandler<LoginAction, LoginResult> {
 
 		String username = action.getUsername();
 		String password = action.getPassword();
-		// EventBus eventBus = action.getEventBus();
+
 
 		// Verify that the input is valid.
 		if (!FieldVerifier.isValidUserName(username)) {
@@ -59,27 +60,31 @@ public class LoginHandler implements ActionHandler<LoginAction, LoginResult> {
 			// to
 			// the client.
 			System.out.println("Exception!");
-			throw new ActionException("Name must be at least 4 characters long");
+			throw new LoginException(
+					"Name must be at least 4 characters long");
 		}
 		if (!FieldVerifier.isValidPassword(password)) {
 			// If the input is not valid, throw an IllegalArgumentException back
 			// to
 			// the client.
 			System.out.println("Exception!");
-			throw new ActionException(
+			throw new LoginException(
 					" Passwords must contain at least 8 characters with at least one digit,one upper case letter, one lower case letter and one special symbol ");
 		}
 
 		CurrentUser user = isUserValid(username, password);
 		if (user == null) {
-			// If the input is not valid, throw an IllegalArgumentException back
+			// If the input is not valid, throw an IllegalArgumentException
+			// back
 			// to
 			// the client.
-			System.out.println("Exception!");
-			throw new ActionException(
-					"Invalid username and/or Password");
+			// System.out.println("Exception!");
+
+			throw new LoginException("Invalid username and/or Password");
+
 		}
 		return new LoginResult(user);
+
 	}
 
 	/* This method should be using spring-security or something like that */
