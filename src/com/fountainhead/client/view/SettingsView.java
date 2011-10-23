@@ -20,9 +20,9 @@ import com.fountainhead.client.presenter.SettingsPresenter;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
-import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.InlineLabel;
+import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.Tree;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -44,12 +44,6 @@ SettingsPresenter.MyView {
 
 	private final Widget widget;
 
-	@UiField
-	InlineLabel userPrivileges;
-
-	@UiField
-	Button togglePrivileges;
-
 	@Inject
 	public SettingsView(Binder uiBinder) {
 		widget = uiBinder.createAndBindUi(this);
@@ -62,25 +56,35 @@ SettingsPresenter.MyView {
 
 	@Override
 	public void setAdmin(boolean isAdmin) {
-		if (isAdmin) {
-			userPrivileges.setText("Admin");
-			togglePrivileges.setText("Toggle to non-admin user");
-		} else {
-			userPrivileges.setText("Non-admin");
-			togglePrivileges.setText("Toggle to admin user");
-		}
-		togglePrivileges.setVisible(true);
-	}
-
-	@UiHandler("togglePrivileges")
-	void onSwitchSecurityClicked(ClickEvent event) {
-		getUiHandlers().togglePrivileges();
+		// if (isAdmin) {
+		// userPrivileges.setText("Admin");
+		// togglePrivileges.setText("Toggle to non-admin user");
+		// } else {
+		// userPrivileges.setText("Non-admin");
+		// togglePrivileges.setText("Toggle to admin user");
+		// }
+		// togglePrivileges.setVisible(true);
 	}
 
 	@Override
 	public void setUserName(String username) {
-		this.userPrivileges.setText(username);
+		// this.userPrivileges.setText(username);
 
 	}
 
+	@UiField
+	Button button1;
+	@UiField
+	Button button2;
+	@UiField
+	Button button3;
+	@UiField Button saveButton;
+	@UiField Button runButton;
+	@UiField
+	ListBox itemsList;
+	@UiField
+	Tree itemsTree;
+
+	void onButtonClick(ClickEvent event) {
+	}
 }

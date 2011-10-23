@@ -62,7 +62,7 @@ Presenter<AdminAreaPresenter.MyView, AdminAreaPresenter.MyProxy> {
 	@TabInfo(container = MainPagePresenter.class)
 	static TabData getTabLabel(ClientGinjector ginjector) {
 		// Priority = 1000, means it will be the right-most tab in the home tab
-		return new TabDataExt("Admin area", 1000,
+		return new TabDataExt("Admin area", 2,
 				ginjector.getAdminGatekeeper());
 	}
 

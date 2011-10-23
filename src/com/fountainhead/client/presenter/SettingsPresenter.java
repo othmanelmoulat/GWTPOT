@@ -49,7 +49,7 @@ SettingsUiHandlers {
 	 */
 	@ProxyCodeSplit
 	@NameToken(NameTokens.settingsPage)
-	@TabInfo(container = MainPagePresenter.class, label = "Settings", priority = 2)
+	@TabInfo(container = MainPagePresenter.class, label = "Report", priority = 1)
 	// The third tab in the main page
 	public interface MyProxy extends TabContentProxyPlace<SettingsPresenter> {
 	}
@@ -76,6 +76,7 @@ SettingsUiHandlers {
 	protected void revealInParent() {
 		RevealContentEvent.fire(this, MainPagePresenter.TYPE_SetTabContent,
 				this);
+
 	}
 
 	@Override

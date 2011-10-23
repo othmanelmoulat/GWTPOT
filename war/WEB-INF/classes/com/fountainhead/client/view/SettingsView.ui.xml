@@ -1,90 +1,98 @@
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"
-	xmlns:g="urn:import:com.google.gwt.user.client.ui">
+	xmlns:g="urn:import:com.google.gwt.user.client.ui"  >
 
 	<ui:style src='../../defines.css'>
+ .dockLayoutPanel {
+        position: static !important;
+    } 
+        .horizontalBar {
+			width: 100%;
+			height: 5px;
+			background-color: darkPanelColor;
+		}
+		
+		.container {
+			border-width: 1px 5px 5px 5px;
+			border-style: solid;
+			border-color: darkPanelColor;
+			margin: 0;
+			padding: 0;
+		}
 		.panel {
 			background-color: lightPanelColor;
-			padding: 5px;
+			/*padding: 5px;*/
+		}
+		.panel-border {
+			background-color: lightPanelColor;
+			border: 2px solid darkPanelColor;
+		}
+		.darkPanel {
+			background-color: darkPanelColor;
+			/*border: 2px solid black;*/
+			
+			/*padding: 5px;*/
+			/*margin:10px 10px 10px 200px; */
+		}
+		.mainPanel {
+			background-color: lightPanelColor;			
+			width:100%;
+			height:100%;
+			border: 2px solid darkPanelColor;
+			/*margin:35px 50px 10px 130px;*/
+			
+		}
+		.buttonSave {
+			width: 80px;
+			padding: 1px;
+			/*padding: 3px 5px 3px 3px;*/
+			margin: 25px 1px 10px 225px; 
+		}
+		.buttonRun {
+			width: 80px;
+			padding: 1px;
+			/*padding: 3px 5px 3px 3px;*/
+			margin: 25px 10px 10px 1px; 
+		}
+		.buttons {
+			width: 120px;
+			padding: 1px;
+			/*padding: 3px 5px 3px 3px;*/
+			margin: 70px 100px 10px 200px; 
 		}
 	</ui:style>
 
 	<g:HTMLPanel addStyleNames="{style.panel}">
-		<h1>Settings page</h1>
+		
 
-		<p>Currently logged in as: <g:InlineLabel ui:field="userPrivileges"/></p>
-    <g:Button ui:field="togglePrivileges" visible="false" />
+		
+		<g:DockLayoutPanel unit="EM"  width="1265px"  height="480px" >
+			<g:west size="15">
+			<g:FlowPanel addStyleNames="{style.panel-border}" >
+				<g:Tree ui:field="itemsTree" />
+				</g:FlowPanel>
+			</g:west>
+			<g:east size="15">
+			<g:FlowPanel addStyleNames="{style.panel-border}" >
+				<g:ListBox ui:field="itemsList" visibleItemCount="5" name="itemsList"/>
+				</g:FlowPanel>
+			</g:east>
+			<g:south size="7" >
+				<g:FlowPanel addStyleNames="{style.panel-border}" >
+					<g:Button ui:field="saveButton" addStyleNames="{style.buttonSave}">Save</g:Button>
+					<g:Button ui:field="runButton" addStyleNames="{style.buttonRun}">Run</g:Button>
+				</g:FlowPanel>
+			</g:south>
+			<g:center >
+				<g:HTMLPanel addStyleNames="{style.mainPanel}"> 
 
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-			varius malesuada mollis. Nunc elit justo, pellentesque at condimentum
-			a, egestas eget ipsum. Sed pulvinar metus non purus sollicitudin
-			porta. Donec est diam, auctor a feugiat ac, elementum in felis. Donec
-			non fringilla nisi. Etiam sollicitudin sapien vitae ipsum porta
-			dictum
-			blandit metus consectetur. Duis libero est, consectetur in
-			tincidunt
-			eu, ultricies eget dui. Integer felis elit, porttitor at
-			convallis sed,
-			venenatis eu metus. Nam ac metus at nibh placerat
-			interdum vel vel
-			mauris. In lacinia tellus sed leo cursus sodales.
-			Vivamus in purus a
-			nunc fermentum viverra quis non mauris. Nulla nec
-			justo tellus.
-			Maecenas leo velit, bibendum at dapibus at, vulputate
-			et turpis. Sed
-			fringilla interdum libero eu facilisis. Quisque lectus
-			odio, aliquam
-			sed vehicula at, euismod et nunc. Praesent at lacinia
-			tortor.</p>
+					<div><g:Button  ui:field="button1" addStyleNames="{style.buttons}">Button1</g:Button></div>
+					<div><g:Button  ui:field="button2" addStyleNames="{style.buttons}">Button 2</g:Button></div>
+					<div><g:Button  ui:field="button3" addStyleNames="{style.buttons}">Button 3</g:Button></div>
+				</g:HTMLPanel> 
+			</g:center>
+		</g:DockLayoutPanel>
 
-		<p>Fusce id blandit augue. Nulla sed velit augue. Vestibulum lectus
-			orci, eleifend non posuere sed, volutpat sit amet metus. Proin at
-			odio
-			et tortor dictum eleifend. Donec dictum egestas sem et tempor.
-			In
-			commodo condimentum pretium. Curabitur congue ipsum vel eros
-			vulputate
-			sed interdum ipsum congue. Pellentesque elementum
-			consectetur mollis.
-			In sollicitudin aliquet dolor at scelerisque.
-			Suspendisse risus leo,
-			vestibulum non euismod a, viverra sed dolor.
-			Nulla facilisi. Sed ut
-			purus ac arcu porttitor feugiat bibendum vel
-			ligula. Morbi fringilla
-			turpis pretium tellus sollicitudin vel
-			volutpat massa sollicitudin.
-			Donec eleifend risus nec mauris
-			pellentesque consectetur. Nulla ornare
-			convallis metus, quis
-			condimentum eros cursus ut. Pellentesque
-			venenatis tellus non felis
-			ullamcorper hendrerit. Praesent semper, nunc
-			eu condimentum interdum,
-			justo nunc semper nulla, nec consequat nisi
-			diam sit amet magna.</p>
-
-		<p>Nulla non magna id nunc volutpat tincidunt. Morbi sed velit sed
-			elit
-			mattis laoreet. Fusce leo massa, sollicitudin nec hendrerit et,
-			pellentesque vitae tortor. Etiam eu lacus in felis sodales rhoncus.
-			Nulla fermentum sodales arcu sed congue. Nunc molestie, augue et
-			congue pharetra, urna dolor bibendum risus, a consectetur lectus diam
-			ac purus. Nulla convallis mi sit amet elit semper vulputate. Aenean
-			congue, velit eu dapibus molestie, lacus dui lacinia dui, id
-			malesuada
-			nisl turpis eget magna. Curabitur in gravida diam. Etiam
-			viverra
-			ullamcorper sapien et auctor. Praesent tincidunt, nisl at
-			tincidunt
-			imperdiet, nisi est blandit diam, id vulputate lacus nulla
-			et tellus.
-			Quisque ipsum mauris, sollicitudin et facilisis sit amet,
-			placerat
-			fringilla erat. Praesent non condimentum erat. Vestibulum
-			ante ipsum
-			primis in faucibus orci luctus et ultrices posuere cubilia
-			Curae;</p>
+		
 	</g:HTMLPanel>
 </ui:UiBinder> 

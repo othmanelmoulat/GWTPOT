@@ -42,20 +42,20 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * @author Philippe Beaudoin
  */
 public class DialogSamplePresenter
-		extends
-			Presenter<DialogSamplePresenter.MyView, DialogSamplePresenter.MyProxy>
-		implements
-			DialogSampleUiHandlers {
+extends
+Presenter<DialogSamplePresenter.MyView, DialogSamplePresenter.MyProxy>
+implements
+DialogSampleUiHandlers {
 	/**
 	 * {@link DialogSamplePresenter}'s proxy.
 	 */
 	@ProxyCodeSplit
 	@NameToken(NameTokens.dialogSamplePage)
-	@TabInfo(container = MainPagePresenter.class, label = "Dialog samples", priority = 1)
+	@TabInfo(container = MainPagePresenter.class, label = "About us", priority = 3)
 	// The second tab in the main page
 	public interface MyProxy
-			extends
-				TabContentProxyPlace<DialogSamplePresenter> {
+	extends
+	TabContentProxyPlace<DialogSamplePresenter> {
 	}
 
 	/**
