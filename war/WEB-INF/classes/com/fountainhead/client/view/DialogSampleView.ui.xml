@@ -16,15 +16,15 @@
 	<g:HTMLPanel addStyleNames="{style.panel}">
 		<h1>About us</h1>
 
-		<g:Button ui:field="localDialog">Launch local dialog</g:Button>
+<!-- 		<g:Button ui:field="localDialog">Launch local dialog</g:Button> -->
 
-    <g:Button ui:field="globalDialog">Launch global dialog</g:Button>
+<!--     <g:Button ui:field="globalDialog">Launch global dialog</g:Button> -->
 
-		<p>
-			You can
-			<g:Anchor styleName="{style.anchor}" ui:field="popupLink">click here</g:Anchor>
-			to see a popup panel.
-		</p>
+<!-- 		<p> -->
+<!-- 			You can -->
+<!-- 			<g:Anchor styleName="{style.anchor}" ui:field="popupLink">click here</g:Anchor> -->
+<!-- 			to see a popup panel. -->
+<!-- 		</p> -->
 
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 			varius malesuada mollis. Nunc elit justo, pellentesque at

@@ -13,9 +13,9 @@
 
 	<g:HTMLPanel addStyleNames="{style.panel}">
 		<h1>Admin Area</h1>
-		<p>This section is only meant to be visible to administrators. Visit
-		the <g:InlineHyperlink targetHistoryToken="{nameTokens.getSettingsPage}">
-		Settings Page</g:InlineHyperlink> to toggle your privileges.</p>
+		<p><h1>This section is only meant to be visible to administrators.</h1></p>
+<!-- 	 Visit 	the <g:InlineHyperlink targetHistoryToken="{nameTokens.getSettingsPage}"> -->
+<!-- 		Settings Page</g:InlineHyperlink> to toggle your privileges.</p> -->
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 			varius malesuada mollis. Nunc elit justo, pellentesque at condimentum
 			a, egestas eget ipsum. Sed pulvinar metus non purus sollicitudin
