@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.fountainhead.shared.LoadTreeAction;
 import com.fountainhead.shared.LoadTreeResult;
-import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.json.client.JSONValue;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
 import com.gwtplatform.dispatch.server.ExecutionContext;
@@ -57,8 +55,8 @@ ActionHandler<LoadTreeAction, LoadTreeResult> {
 				.getResourceAsStream("/WEB-INF/tree-data.json");
 
 
-		JSONValue jsonValue = JSONParser.parse(getStringFromStream(in));
-		return new LoadTreeResult(jsonValue);
+		// ;
+		return new LoadTreeResult(getStringFromStream(in));
 
 	}
 	private String getStringFromStream(InputStream is){

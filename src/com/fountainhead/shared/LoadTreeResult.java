@@ -17,7 +17,6 @@
 package com.fountainhead.shared;
 
 
-import com.google.gwt.json.client.JSONValue;
 import com.gwtplatform.dispatch.shared.Result;
 
 /**
@@ -27,7 +26,7 @@ public class LoadTreeResult implements Result {
 
 	// private static final long serialVersionUID = 4621412923270714515L;
 
-	private JSONValue response;
+	private String response;
 
 	/**
 	 * For serialization only.
@@ -36,11 +35,11 @@ public class LoadTreeResult implements Result {
 	private LoadTreeResult() {
 	}
 
-	public LoadTreeResult(final JSONValue response) {
+	public LoadTreeResult(final String response) {
 		this.response = response;
 	}
 
-	public JSONValue getResponse() {
+	public String getResponse() {
 		return response;
 	}
 

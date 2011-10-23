@@ -27,6 +27,7 @@ import com.fountainhead.shared.LoadTreeResult;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.json.client.JSONArray;
 import com.google.gwt.json.client.JSONObject;
+import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.Window;
@@ -101,7 +102,7 @@ ReportUiHandlers {
 
 	@Override
 	protected void onReveal() {
-		// loadTree();
+		loadTree();
 	}
 
 	// @Override
@@ -130,8 +131,9 @@ ReportUiHandlers {
 
 			@Override
 			public void onSuccess(LoadTreeResult result) {
-				JSONValue jsonValue = result.getResponse();
-
+				JSONValue jsonValue = JSONParser.parse(result
+								.getResponse());
+				displayJSONObject(jsonValue);
 			}
 		});
 	}
