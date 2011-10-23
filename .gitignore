@@ -1,6 +1,14 @@
 **/war/WEB-INF/classes/*
 /war/WEB-INF/classes/
 /war/WEB-INF/classes/*
+war/WEB-INF/classes
+war/WEB-INF/deploy
+war/gwtpot
+.gwt
+war/WEB-INF/classes/
+war/WEB-INF/deploy/
+war/gwtpot/
+.gwt/
 **/war/WEB-INF/deploy/*
 /war/WEB-INF/deploy
 /war/WEB-INF/deploy/*
