@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -22,7 +22,7 @@ import java.io.Serializable;
  * This is a basic class that holds the privileges of the user currently logged
  * in.
  * 
- * @author Philippe Beaudoin
+
  */
 public class CurrentUser implements Serializable {
 

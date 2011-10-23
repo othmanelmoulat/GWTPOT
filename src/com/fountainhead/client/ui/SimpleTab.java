@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -26,7 +26,7 @@ import com.gwtplatform.mvp.client.TabData;
  * A {@link BaseTab} styled as a square and meant to be contained in a
  * {@link SimpleTabPanel}.
  * 
- * @author Philippe Beaudoin
+
  */
 public class SimpleTab extends BaseTab {
 

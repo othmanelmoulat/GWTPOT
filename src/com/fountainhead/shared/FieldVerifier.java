@@ -1,5 +1,5 @@
 /**
- * (C) Copyright 2010, 2011 upTick Pty Ltd
+
  *
  * Licensed under the terms of the GNU General Public License version 3
  * as published by the Free Software Foundation. You may obtain a copy of the
@@ -37,7 +37,7 @@ public class FieldVerifier {
     )                       # End of group
 
     Passwords must contain at least 8 characters with at least one digit,
-    one upper case letter, one lower case letter and one special symbol (“@#$%”).
+    one upper case letter, one lower case letter and one special symbol (ï¿½@#$%ï¿½).
 
 	 */
 

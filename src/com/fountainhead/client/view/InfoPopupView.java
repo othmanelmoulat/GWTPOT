@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -28,7 +28,7 @@ import com.gwtplatform.mvp.client.PopupViewImpl;
  * The view implementation for
  * {@link com.fountainhead.client.presenter.InfoPopupPresenterWidget}.
  * 
- * @author Philippe Beaudoin
+
  */
 public class InfoPopupView extends PopupViewImpl
 		implements

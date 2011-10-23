@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -29,7 +29,7 @@ import com.gwtplatform.mvp.client.proxy.NavigationHandler;
  * matter which presenter is visible. Compare to
  * {@link LocalDialogPresenterWidget}.
  * 
- * @author Philippe Beaudoin
+
  */
 public class GlobalDialogPresenterWidget
 		extends
@@ -38,7 +38,7 @@ public class GlobalDialogPresenterWidget
 			NavigationHandler {
 
 	/**
-	 * @author Philippe beaudoin
+
 	 */
 	public interface MyView extends PopupView {
 		void setNavigationPlace(String placeName);

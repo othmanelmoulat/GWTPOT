@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -25,7 +25,7 @@ import com.gwtplatform.dispatch.annotation.GenEvent;
  * This classes uses GWTP annotation processors to generate
  * {@code CurrentUserChangedEvent} and {@code CurrentUserChangedHandler}.
  * 
- * @author Philippe Beaudoin
+
  */
 @GenEvent
 public class CurrentUserChanged {

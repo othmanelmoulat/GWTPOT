@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -30,7 +30,7 @@ import com.gwtplatform.mvp.client.proxy.RevealContentHandler;
  * The base class for {@link HomePresenter}. Used mainly to test issue 222:
  * http://code.google.com/p/gwt-platform/issues/detail?id=222.
  * 
- * @author Philippe Beaudoin
+
  * 
  * @param <V>
  *            The specific type of the {@link View}. Must implement

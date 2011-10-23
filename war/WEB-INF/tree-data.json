@@ -64,4 +64,35 @@
         id:'tabs-nested-layouts',
         leaf:true
     }]
+    },{
+    text:'GWT Panel Layouts Examples',
+    children:[{
+        text:'AbsoluteLayoutPanel',
+        id:'abs-form',
+        leaf:true
+    },{
+        text:'FlowPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'DockLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'HTMLPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'ScrollPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'FormPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'RootLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    }]
 }]

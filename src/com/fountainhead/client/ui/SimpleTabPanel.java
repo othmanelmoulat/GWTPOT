@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -27,8 +27,8 @@ import com.gwtplatform.mvp.client.TabData;
  * Look at {@link LinkMenu} to see how we can use this widget within a UiBinder
  * file even though its constructor relies on dependency injection.
  * 
- * @author Christian Goudreau
- * @author Philippe Beaudoin
+
+
  */
 public class SimpleTabPanel extends BaseTabPanel {
 

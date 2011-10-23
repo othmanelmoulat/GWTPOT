@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -44,8 +44,8 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * {@link TabDataExt} that ensures the tab is not visible to non-administrator
  * users.
  * 
- * @author Christian Goudreau
- * @author Philippe Beaudoin
+
+
  */
 public class AdminAreaPresenter
 extends

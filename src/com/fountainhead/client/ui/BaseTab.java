@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -29,8 +29,8 @@ import com.gwtplatform.mvp.client.TabData;
  * Subclasses can style the tab in any way they want. A {@link BaseTab} is added
  * to a {@link BaseTabPanel}.
  * 
- * @author Christian Goudreau
- * @author Philippe Beaudoin
+
+
  */
 public abstract class BaseTab extends Composite implements Tab {
 	/**

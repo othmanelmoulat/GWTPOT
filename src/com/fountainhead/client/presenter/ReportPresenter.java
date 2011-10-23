@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -16,24 +16,17 @@
 
 package com.fountainhead.client.presenter;
 
-import java.util.Iterator;
-import java.util.Set;
-
 import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.view.ReportUiHandlers;
 import com.fountainhead.shared.CurrentUser;
+import com.fountainhead.shared.JSONTreeLoader;
 import com.fountainhead.shared.LoadTreeAction;
 import com.fountainhead.shared.LoadTreeResult;
 import com.google.gwt.event.shared.EventBus;
-import com.google.gwt.json.client.JSONArray;
-import com.google.gwt.json.client.JSONObject;
 import com.google.gwt.json.client.JSONParser;
-import com.google.gwt.json.client.JSONString;
 import com.google.gwt.json.client.JSONValue;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Tree;
-import com.google.gwt.user.client.ui.TreeItem;
 import com.google.inject.Inject;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
@@ -51,8 +44,8 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * <p />
  * It demonstrates the option 1 described in {@link TabInfo}.
  * 
- * @author Christian Goudreau
- * @author Philippe Beaudoin
+
+
  */
 public class ReportPresenter
 extends
@@ -120,83 +113,25 @@ ReportUiHandlers {
 
 	@Override
 	public void loadTree() {
-		getDispatcher().execute(new LoadTreeAction(""),
+		final JSONTreeLoader loader = new JSONTreeLoader(getView().getTree());
+		getDispatcher().execute(new LoadTreeAction("/WEB-INF/tree-data.json"),
 				new AsyncCallback<LoadTreeResult>() {
 
 			@Override
 			public void onFailure(Throwable caught) {
-				Window.alert(caught.getMessage());
+						loader.populateTreeError(caught.getMessage());
 
 			}
 
 			@Override
 			public void onSuccess(LoadTreeResult result) {
 				JSONValue jsonValue = JSONParser.parse(result
-								.getResponse());
-				displayJSONObject(jsonValue);
+						.getResponse());
+						loader.populateTree(jsonValue);
 			}
 		});
 	}
-	/*
-	 * Add the object presented by the JSONValue as a children to the requested
-	 * TreeItem.
-	 */
-	private void addChildren(TreeItem treeItem, JSONValue jsonValue) {
-		JSONArray jsonArray;
-		JSONObject jsonObject;
-		JSONString jsonString;
 
-		if ((jsonArray = jsonValue.isArray()) != null) {
-			for (int i = 0; i < jsonArray.size(); ++i) {
-				TreeItem child = treeItem.addItem(getChildText("["
-						+ Integer.toString(i) + "]"));
-				addChildren(child, jsonArray.get(i));
-			}
-		} else if ((jsonObject = jsonValue.isObject()) != null) {
-			Set keys = jsonObject.keySet();
-			for (Iterator iter = keys.iterator(); iter.hasNext();) {
-				String key = (String) iter.next();
-				TreeItem child = treeItem.addItem(getChildText(key));
-				addChildren(child, jsonObject.get(key));
-			}
-		} else if ((jsonString = jsonValue.isString()) != null) {
-			// Use stringValue instead of toString() because we don't want
-			// escaping
-			treeItem.addItem(jsonString.stringValue());
-		} else {
-			// JSONBoolean, JSONNumber, and JSONNull work well with toString().
-			treeItem.addItem(getChildText(jsonValue.toString()));
-		}
-	}
-
-	private void displayError(String responseText) {
-		Tree jsonTree = getView().getTree();
-		jsonTree.removeItems();
-		jsonTree.setVisible(true);
-		TreeItem treeItem = jsonTree.addItem("Failed to parse JSON response");
-		treeItem.addItem(responseText);
-		treeItem.setStyleName("JSON-JSONResponseObject");
-		treeItem.setState(true);
-	}
-
-	/*
-	 * Update the treeview of a JSON object.
-	 */
-	private void displayJSONObject(JSONValue jsonValue) {
-		Tree jsonTree = getView().getTree();
-		jsonTree.removeItems();
-		jsonTree.setVisible(true);
-		TreeItem treeItem = jsonTree.addItem("root");
-		addChildren(treeItem, jsonValue);
-		// treeItem.setStyleName("JSON-JSONResponseObject");
-		treeItem.setState(true);
-	}
-	/*
-	 * Causes the text of child elements to wrap.
-	 */
-	private String getChildText(String text) {
-		return "<span style='white-space:normal'>" + text + "</span>";
-	}
 
 	/**
 	 * @return the dispatcher

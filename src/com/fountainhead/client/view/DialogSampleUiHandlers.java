@@ -1,5 +1,5 @@
 /**
- * Copyright 2011 ArcBees Inc.
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -21,7 +21,7 @@ import com.gwtplatform.mvp.client.UiHandlers;
 /**
  * {@link DialogSampleView}'s {@link UiHandlers}.
  * 
- * @author Philippe Beaudoin
+
  */
 public interface DialogSampleUiHandlers extends UiHandlers {
 	void showDetailsDialog();

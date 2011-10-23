@@ -1,5 +1,5 @@
 /**
- * Copyright 2010 Philippe Beaudoin
+
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,12 +50,10 @@ ActionHandler<LoadTreeAction, LoadTreeResult> {
 			ExecutionContext context)
 					throws ActionException {
 
-		String username = action.getJsonFile();
+		String jsonFile = action.getJsonFile();
 		InputStream in = servletContext
-				.getResourceAsStream("/WEB-INF/tree-data.json");
+.getResourceAsStream(jsonFile);
 
-
-		// ;
 		return new LoadTreeResult(getStringFromStream(in));
 
 	}
