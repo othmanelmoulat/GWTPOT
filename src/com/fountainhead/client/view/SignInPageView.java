@@ -38,7 +38,7 @@ SignInPagePresenter.MyView {
 			+ "  <tr>\n" + "<td>&nbsp;</td>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
 			+ "  <tr>\n" + "<td>&nbsp;</td>\n" + "<td>&nbsp;</td>\n" + "</tr>\n"
 			+ "  <tr>\n"
-			+ "    <td colspan=\"2\" style=\"font-weight:bold;\">Sign In <img src=\"images/signin.gif\"/></td>\n"
+			+ "    <td colspan=\"2\" style=\"font-weight:bold;\">Sign In </td>\n"
 			+ "  </tr>\n"
 			+ "  <tr>\n"
 			+ "    <td>User name</td>\n"
