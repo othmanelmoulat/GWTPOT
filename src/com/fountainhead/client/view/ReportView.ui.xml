@@ -35,7 +35,7 @@
 			/*margin:10px 10px 10px 200px; */
 		}
 		.mainPanel {
-			background-color: white;			
+			background-color: lightPanelColor;			
 			width:100%;
 			height:100%;
 			/*border: 2px solid darkPanelColor;*/
@@ -71,8 +71,9 @@ em{color: red;}
 
 
 #topsection{
-background: darkPanelColor;
+background: lightPanelColor;
 height: 90px; /*Height of top section*/
+
 }
 
 #topsection h1{
@@ -86,30 +87,32 @@ width: 100%;
 }
 
 #contentcolumn{
-margin: 0 15% 0 20%; /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
+
+ /*Margins for content column. Should be "0 RightColumnWidth 0 LeftColumnWidth*/
 }
 
 #leftcolumn{
 float: left;
 width: 20%; /*Width of left column in percentage*/
 margin-left: -100%;
-background: white;
+background: lightPanelColor;
 }
 
 #rightcolumn{
 float: left;
 width: 15%; /*Width of right column in pixels*/
 margin-left: -15%; /*Set margin to that of -(RightColumnWidth)*/
-background: white;
+background: lightPanelColor;
 }
 
 #footer{
 clear: left;
 width: 100%;
-background: darkPanelColor;
+background: lightPanelColor;
 color: #FFF;
 text-align: center;
-padding: 4px 0;
+/*padding: 4px 0;*/
+border: 5px solid darkPanelColor;
 }
 
 #footer a{
@@ -117,12 +120,12 @@ color: #FFFF80;
 }
 
 .innertube{
-margin: 10px; /*Margins for inner DIV inside each column (to provide padding)*/
+ /*Margins for inner DIV inside each column (to provide padding)*/
 margin-top: 0;
 }
 	</ui:style>
 
-	<g:HTMLPanel >
+	<g:HTMLPanel addStyleNames="{style.panel}">
 		
 <div id="maincontainer">
 
@@ -147,11 +150,11 @@ margin-top: 0;
 
 <div id="rightcolumn">
 <div class="innertube"><g:ScrollPanel >
-				<g:ListBox ui:field="itemsList" visibleItemCount="18" name="itemsList" width="100%" height="100%"/>
+				<g:ListBox ui:field="itemsList" visibleItemCount="18" name="itemsList" width="100%" height="100%" addStyleNames="{style.panel}"/>
 				</g:ScrollPanel></div>
 </div>
 
-<div id="footer"><g:FlowPanel  >
+<div id="footer"><g:FlowPanel addStyleNames="{style.mainPanel}" >
 					<g:Button ui:field="saveButton" addStyleNames="{style.buttonSave}">Save</g:Button>
 					<g:Button ui:field="runButton" addStyleNames="{style.buttonRun}">Run</g:Button>
 				</g:FlowPanel></div>

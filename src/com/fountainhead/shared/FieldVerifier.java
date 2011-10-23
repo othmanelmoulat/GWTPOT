@@ -22,23 +22,21 @@ public class FieldVerifier {
 			return false;
 		}
 
-		return name.length() > 4;
+		return name.length() > 3;
 	}
 
 	/*
-
-  (                         # Start of group
-      (?=.*\d)              #   must contains one digit from 0-9
-      (?=.*[a-z])           #   must contains one lower case characters
-      (?=.*[A-Z])           #   must contains one upper case characters
-      (?=.*[@#$%])          #   must contains one special symbols in the list "@#$%"
-                  .         #     match anything with previous condition checking
-                    {8,32}  #        length at least 8 characters and maximum of 32
-    )                       # End of group
-
-    Passwords must contain at least 8 characters with at least one digit,
-    one upper case letter, one lower case letter and one special symbol (�@#$%�).
-
+	 * 
+	 * ( # Start of group (?=.*\d) # must contains one digit from 0-9
+	 * (?=.*[a-z]) # must contains one lower case characters (?=.*[A-Z]) # must
+	 * contains one upper case characters (?=.*[@#$%]) # must contains one
+	 * special symbols in the list "@#$%" . # match anything with previous
+	 * condition checking {8,32} # length at least 8 characters and maximum of
+	 * 32 ) # End of group
+	 * 
+	 * Passwords must contain at least 8 characters with at least one digit, one
+	 * upper case letter, one lower case letter and one special symbol
+	 * (�@#$%�).
 	 */
 
 	private static final String PASSWORD_VALIDATION_REGEX = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{8,32})";
