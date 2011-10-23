@@ -24,5 +24,5 @@ import com.gwtplatform.mvp.client.UiHandlers;
  * @author Philippe Beaudoin
  */
 public interface ReportUiHandlers extends UiHandlers {
-	void togglePrivileges();
+	void loadTree();
 }

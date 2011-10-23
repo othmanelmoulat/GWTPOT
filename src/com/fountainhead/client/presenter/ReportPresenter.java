@@ -21,6 +21,7 @@ import com.fountainhead.client.view.ReportUiHandlers;
 import com.fountainhead.shared.CurrentUser;
 import com.google.gwt.event.shared.EventBus;
 import com.google.inject.Inject;
+import com.gwtplatform.dispatch.shared.DispatchAsync;
 import com.gwtplatform.mvp.client.HasUiHandlers;
 import com.gwtplatform.mvp.client.Presenter;
 import com.gwtplatform.mvp.client.View;
@@ -44,6 +45,9 @@ extends
 Presenter<ReportPresenter.MyView, ReportPresenter.MyProxy>
 implements
 ReportUiHandlers {
+
+	private final DispatchAsync dispatcher;
+	private final CurrentUser currentUser;
 	/**
 	 * {@link ReportPresenter}'s proxy.
 	 */
@@ -62,13 +66,15 @@ ReportUiHandlers {
 		void setUserName(String username);
 	}
 
-	private final CurrentUser currentUser;
+
 
 	@Inject
 	public ReportPresenter(final EventBus eventBus, final MyView view,
-			final MyProxy proxy, final CurrentUser currentUser) {
+			final MyProxy proxy, final DispatchAsync dispatcher,
+			final CurrentUser currentUser) {
 		super(eventBus, view, proxy);
 		this.currentUser = currentUser;
+		this.dispatcher = dispatcher;
 		view.setUiHandlers(this);
 	}
 
@@ -81,19 +87,24 @@ ReportUiHandlers {
 
 	@Override
 	protected void onReveal() {
-		updateView();
+		loadTree();
 	}
+
+	// @Override
+	// public void togglePrivileges() {
+	// currentUser.setAdministrator(!currentUser.isAdministrator());
+	// updateView();
+	// }
+	//
+	// private void updateView() {
+	// System.out.println(currentUser.getLogin());
+	// System.out.println("isAdmin="+currentUser.isAdministrator());
+	// getView().setAdmin(currentUser.isAdministrator());
+	// getView().setUserName(currentUser.getLogin());
+	// }
 
 	@Override
-	public void togglePrivileges() {
-		currentUser.setAdministrator(!currentUser.isAdministrator());
-		updateView();
-	}
+	public void loadTree() {
 
-	private void updateView() {
-		System.out.println(currentUser.getLogin());
-		System.out.println("isAdmin="+currentUser.isAdministrator());
-		getView().setAdmin(currentUser.isAdministrator());
-		getView().setUserName(currentUser.getLogin());
 	}
 }

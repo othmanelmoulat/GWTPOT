@@ -16,6 +16,10 @@
 
 package com.fountainhead.server;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 
@@ -79,24 +83,26 @@ public class LoginHandler implements ActionHandler<LoginAction, LoginResult> {
 	}
 
 	/* This method should be using spring-security or something like that */
-	private CurrentUser isUserValid(String username, String password) {
+	private CurrentUser isUserValid(String username, String password)
+			throws ActionException {
 
 		CurrentUser user = null;
-
-		if ("administrator".equals(username)
-				&& "administrator".equals(password)) {
-			user = new CurrentUser();
-			user.setLogin(username);
-			user.setLoggedIn(true);
-			user.setAdministrator(true);
-
-		} else if ("user".equals(username) && "user".equals(password)) {
-			user = new CurrentUser();
-			user.setLogin(username);
-			user.setLoggedIn(true);
-			user.setAdministrator(false);
-
+		InputStream stream = servletContext
+				.getResourceAsStream("/WEB-INF/users.properties");
+		Properties props = new Properties();
+		try {
+			props.load(stream);
+			if (props.contains(username)
+					&& props.getProperty(username).equals(password)) {
+				user = new CurrentUser();
+				user.setLogin(username);
+				user.setLoggedIn(true);
+				user.setAdministrator(username.equals("administrator"));
+			}
+		} catch (IOException e) {
+			throw new ActionException(e);
 		}
+
 
 		return user;
 
