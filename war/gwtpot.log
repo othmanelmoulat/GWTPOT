@@ -1,0 +1,201 @@
+22:03:56 DEBUG [main] JspRuntimeContext - Parent class loader is: ContextLoader@GWT Prototype
+22:03:56 DEBUG [main] JspServlet - Scratch dir for the JSP engine is: C:\Users\othman\AppData\Local\Temp\Jetty_127_0_0_1_8888_war____-g0qk00\jsp
+22:03:56 DEBUG [main] JspServlet - IMPORTANT: Do not modify the generated servlets
+22:04:16 DEBUG [btpool0-0] ServerLogImplLog4J - sign in onSuccess() - username: administrator
+22:04:16 DEBUG [btpool0-0] ServerLogImplLog4J - sign in onSuccess() - username: administrator
+22:04:16 DEBUG [btpool0-0] ServerLogImplLog4J - loadTree() -OnSucces()- [{
+    text:'Basic Ext Layouts',
+    expanded: true,
+    children:[{
+        text:'Absolute',
+        id:'absolute',
+        leaf:true
+    },{
+        text:'Accordion',
+        id:'accordion',
+        leaf:true
+    },{
+        text:'Anchor',
+        id:'anchor',
+        leaf:true
+    },{
+        text:'Border',
+        id:'border',
+        leaf:true
+    },{
+        text:'Card (TabPanel)',
+        id:'card-tabs',
+        leaf:true
+    },{
+        text:'Card (Wizard)',
+        id:'card-wizard',
+        leaf:true
+    },{
+        text:'Column',
+        id:'column',
+        leaf:true
+    },{
+        text:'Fit',
+        id:'fit',
+        leaf:true
+    },{
+        text:'Form',
+        id:'form',
+        leaf:true
+    },{
+        text:'Table',
+        id:'table',
+        leaf:true
+    }]
+},{
+    text:'Custom Layouts',
+    children:[{
+        text:'Row',
+        id:'row',
+        leaf:true
+    },{
+        text:'Center',
+        id:'center',
+        leaf:true
+    }]
+},{
+    text:'Combination Examples',
+    children:[{
+        text:'Absolute Layout Form',
+        id:'abs-form',
+        leaf:true
+    },{
+        text:'Tabs with Nested Layouts',
+        id:'tabs-nested-layouts',
+        leaf:true
+    }]
+    },{
+    text:'GWT Panel Layouts Examples',
+    children:[{
+        text:'AbsoluteLayoutPanel',
+        id:'abs-form',
+        leaf:true
+    },{
+        text:'FlowPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'DockLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'HTMLPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'ScrollPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'FormPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'RootLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    }]
+}]
+22:04:16 DEBUG [btpool0-0] ServerLogImplLog4J - loadTree() -OnSucces()- [{
+    text:'Basic Ext Layouts',
+    expanded: true,
+    children:[{
+        text:'Absolute',
+        id:'absolute',
+        leaf:true
+    },{
+        text:'Accordion',
+        id:'accordion',
+        leaf:true
+    },{
+        text:'Anchor',
+        id:'anchor',
+        leaf:true
+    },{
+        text:'Border',
+        id:'border',
+        leaf:true
+    },{
+        text:'Card (TabPanel)',
+        id:'card-tabs',
+        leaf:true
+    },{
+        text:'Card (Wizard)',
+        id:'card-wizard',
+        leaf:true
+    },{
+        text:'Column',
+        id:'column',
+        leaf:true
+    },{
+        text:'Fit',
+        id:'fit',
+        leaf:true
+    },{
+        text:'Form',
+        id:'form',
+        leaf:true
+    },{
+        text:'Table',
+        id:'table',
+        leaf:true
+    }]
+},{
+    text:'Custom Layouts',
+    children:[{
+        text:'Row',
+        id:'row',
+        leaf:true
+    },{
+        text:'Center',
+        id:'center',
+        leaf:true
+    }]
+},{
+    text:'Combination Examples',
+    children:[{
+        text:'Absolute Layout Form',
+        id:'abs-form',
+        leaf:true
+    },{
+        text:'Tabs with Nested Layouts',
+        id:'tabs-nested-layouts',
+        leaf:true
+    }]
+    },{
+    text:'GWT Panel Layouts Examples',
+    children:[{
+        text:'AbsoluteLayoutPanel',
+        id:'abs-form',
+        leaf:true
+    },{
+        text:'FlowPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'DockLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'HTMLPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'ScrollPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'FormPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    },{
+        text:'RootLayoutPanel',
+        id:'tabs-nested-layouts',
+        leaf:true
+    }]
+}]

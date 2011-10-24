@@ -18,9 +18,13 @@ public class GWTPot implements EntryPoint {
 		 */
 		Log.setUncaughtExceptionHandler();
 
-		// This is required for Gwt-Platform proxy's generator
-		DelayedBindRegistry.bind(ginjector);
+		try {
+			// This is required for Gwt-Platform proxy's generator
+			DelayedBindRegistry.bind(ginjector);
 
-		ginjector.getPlaceManager().revealCurrentPlace();
+			ginjector.getPlaceManager().revealCurrentPlace();
+		} catch (Exception e) {
+			Log.debug(e.toString());
+		}
 	}
 }

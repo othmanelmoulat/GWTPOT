@@ -111,7 +111,7 @@ public class SignInPagePresenter
 							// Fatal Unexpected error will be logged with
 							// gwt-log
 							if (Log.isDebugEnabled())
-								Log.debug("Caught unexpected Error:\n"
+								Log.debug("Sign In-Caught unexpected Error!\n"
 										+ caught.toString());
 							Window.alert("Caught unexpected Error!\n Refer to Log for more info about this error");
 						}
@@ -131,7 +131,7 @@ public class SignInPagePresenter
 
 						getPlaceManager().revealPlace(placeRequest);
 
-						Log.debug("onSuccess() - "
+						Log.debug("sign in onSuccess() - username: "
 								+ result.getResponse().getLogin());
 					}
 				});

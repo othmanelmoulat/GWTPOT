@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-servlet-3.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/javax.inject.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-log-3.1.6.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/log4j.jar"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

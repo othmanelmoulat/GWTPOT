@@ -1,6 +1,5 @@
 package com.fountainhead.client.gin;
 
-
 import com.fountainhead.client.core.AdminGatekeeper;
 import com.fountainhead.client.core.IsAdminGatekeeper;
 import com.fountainhead.client.core.LoggedInGatekeeper;

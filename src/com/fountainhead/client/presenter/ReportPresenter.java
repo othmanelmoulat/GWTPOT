@@ -105,7 +105,7 @@ public class ReportPresenter
 					public void onFailure(Throwable caught) {
 						// fatal error . log it
 						if (Log.isDebugEnabled())
-							Log.debug("loaddTree()-Caught unexpected Error:\n"
+							Log.debug("loadTree()-Caught unexpected Error:\n"
 									+ caught.toString());
 
 						loader.populateTreeError(caught.getMessage());

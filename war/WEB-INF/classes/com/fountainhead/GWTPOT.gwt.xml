@@ -34,6 +34,25 @@
 	<define-configuration-property name='gin.ginjector' is-multi-valued='false' />
 	<set-configuration-property name='gin.ginjector' value='com.fountainhead.client.gin.ClientGinjector' />
 	<!--
+       When developing, you may wish to turn on enhanced web mode stack traces.
+       Note this adds overhead to the resulting JavaScript so you generally
+       don"t want to leave this on for production.
+  -->
+  <set-property name="compiler.emulatedStack" value="true" />
+  <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true" />
+  <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true" />
+
+  <!-- Loggers Enabled by default -->
+  <set-property name="log_GWTLogger" value="ENABLED" />
+  
+
+  <!-- Loggers Disabled by default -->
+  <set-property name="log_WindowLogger" value="DISABLED" />
+<!--   <set-property name="log_ConsoleLogger" value="DISABLED" /> -->
+  <set-property name="log_DivLogger" value="DISABLED" />
+  <set-property name="log_FirebugLogger" value="DISABLED" />
+  <!-- <set-property name="log_SystemLogger" value="DISABLED" /> -->
+	<!--
     Inspired by Apache log4j PatternLayout:
     http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html
   -->
