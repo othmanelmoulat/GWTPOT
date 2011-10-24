@@ -17,6 +17,12 @@
 	<!-- Other module inherits                                      -->
 	<inherits name='com.gwtplatform.mvp.Mvp'/>
 	<inherits name='com.gwtplatform.dispatch.Dispatch'/>
+	<!-- For development, a default of `DEBUG` is recommended -->
+    <inherits name="com.allen_sauer.gwt.log.gwt-log-DEBUG" />
+    <!-- In gwt-log remote logging -->
+   <inherits name="com.allen_sauer.gwt.log.gwt-log-RemoteLogger" />
+    
+	
 
 	<!-- Specify the app entry point class.                         -->
 	<entry-point class='com.fountainhead.client.GWTPot'/>
@@ -27,5 +33,10 @@
 
 	<define-configuration-property name='gin.ginjector' is-multi-valued='false' />
 	<set-configuration-property name='gin.ginjector' value='com.fountainhead.client.gin.ClientGinjector' />
+	<!--
+    Inspired by Apache log4j PatternLayout:
+    http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html
+  -->
+  <set-configuration-property name="log_pattern" value="(%F:%L) %d [%-5p] %m%n" />
 
 </module>

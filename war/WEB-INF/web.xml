@@ -3,20 +3,32 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 
-	<display-name>testme</display-name>
+	<display-name>GWT Prototype</display-name>
+	<servlet>
+		<servlet-name>gwt-log-remote-logger-servlet</servlet-name>
+		<servlet-class>com.allen_sauer.gwt.log.server.RemoteLoggerServiceImpl</servlet-class>
+		<!-- symbolMaps param provides for stack trace deobfuscation -->
+		<init-param>
+			<param-name>symbolMaps</param-name>
+			<!-- This value assumes a GWT compile with '-deploy war/WEB-INF/deploy/' -->
+			<param-value>WEB-INF/deploy/gwtpot/symbolMaps/</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>gwt-log-remote-logger-servlet</servlet-name>
+		<url-pattern>/gwtpot/gwt-log</url-pattern>
+	</servlet-mapping>
 
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>testme.html</welcome-file>
+		<welcome-file>GWTPot.html</welcome-file>
 	</welcome-file-list>
 
-	<!--
-		This Guice listener hijacks all further filters and servlets. Extra
-		filters and servlets have to be configured in your
-		ServletModule#configureServlets() by calling
-		serve(String).with(Class<? extends HttpServlet>) and
-		filter(String).through(Class<? extends Filter)
-	-->
+	<!-- This Guice listener hijacks all further filters and servlets. Extra 
+		filters and servlets have to be configured in your ServletModule#configureServlets() 
+		by calling serve(String).with(Class<? extends HttpServlet>) and filter(String).through(Class<? 
+		extends Filter) -->
 	<listener>
 		<listener-class>com.fountainhead.server.guice.GuiceServletConfig</listener-class>
 	</listener>

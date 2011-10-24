@@ -16,6 +16,7 @@
 
 package com.fountainhead.client.presenter;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.view.ReportUiHandlers;
 import com.fountainhead.shared.CurrentUser;
@@ -44,14 +45,12 @@ import com.gwtplatform.mvp.client.proxy.TabContentProxyPlace;
  * <p />
  * It demonstrates the option 1 described in {@link TabInfo}.
  * 
-
-
  */
 public class ReportPresenter
-extends
-Presenter<ReportPresenter.MyView, ReportPresenter.MyProxy>
-implements
-ReportUiHandlers {
+		extends
+			Presenter<ReportPresenter.MyView, ReportPresenter.MyProxy>
+		implements
+			ReportUiHandlers {
 
 	private final DispatchAsync dispatcher;
 	private final CurrentUser currentUser;
@@ -73,8 +72,6 @@ ReportUiHandlers {
 		void setUserName(String username);
 		Tree getTree();
 	}
-
-
 
 	@Inject
 	public ReportPresenter(final EventBus eventBus, final MyView view,
@@ -98,40 +95,34 @@ ReportUiHandlers {
 		loadTree();
 	}
 
-	// @Override
-	// public void togglePrivileges() {
-	// currentUser.setAdministrator(!currentUser.isAdministrator());
-	// updateView();
-	// }
-	//
-	// private void updateView() {
-	// System.out.println(currentUser.getLogin());
-	// System.out.println("isAdmin="+currentUser.isAdministrator());
-	// getView().setAdmin(currentUser.isAdministrator());
-	// getView().setUserName(currentUser.getLogin());
-	// }
-
 	@Override
 	public void loadTree() {
 		final JSONTreeLoader loader = new JSONTreeLoader(getView().getTree());
 		getDispatcher().execute(new LoadTreeAction("/WEB-INF/tree-data.json"),
 				new AsyncCallback<LoadTreeResult>() {
 
-			@Override
-			public void onFailure(Throwable caught) {
+					@Override
+					public void onFailure(Throwable caught) {
+						// fatal error . log it
+						if (Log.isDebugEnabled())
+							Log.debug("loaddTree()-Caught unexpected Error:\n"
+									+ caught.toString());
+
 						loader.populateTreeError(caught.getMessage());
 
-			}
+					}
 
-			@Override
-			public void onSuccess(LoadTreeResult result) {
-				JSONValue jsonValue = JSONParser.parse(result
-						.getResponse());
+					@Override
+					public void onSuccess(LoadTreeResult result) {
+						if (Log.isDebugEnabled())
+							Log.debug("loadTree() -OnSucces()- "
+									+ result.getResponse());
+						JSONValue jsonValue = JSONParser.parse(result
+								.getResponse());
 						loader.populateTree(jsonValue);
-			}
-		});
+					}
+				});
 	}
-
 
 	/**
 	 * @return the dispatcher

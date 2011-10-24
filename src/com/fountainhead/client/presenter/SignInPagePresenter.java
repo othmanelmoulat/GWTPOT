@@ -14,9 +14,7 @@
 
 package com.fountainhead.client.presenter;
 
-
-
-
+import com.allen_sauer.gwt.log.client.Log;
 import com.fountainhead.client.core.LoginAuthenticatedEvent;
 import com.fountainhead.client.place.NameTokens;
 import com.fountainhead.client.view.SignInPageUiHandlers;
@@ -40,10 +38,11 @@ import com.gwtplatform.mvp.client.proxy.PlaceRequest;
 import com.gwtplatform.mvp.client.proxy.ProxyPlace;
 import com.gwtplatform.mvp.client.proxy.RevealRootContentEvent;
 
-
-public class SignInPagePresenter extends
-Presenter<SignInPagePresenter.MyView, SignInPagePresenter.MyProxy> implements
-SignInPageUiHandlers {
+public class SignInPagePresenter
+		extends
+			Presenter<SignInPagePresenter.MyView, SignInPagePresenter.MyProxy>
+		implements
+			SignInPageUiHandlers {
 
 	private final EventBus eventBus;
 	private final DispatchAsync dispatcher;
@@ -64,8 +63,8 @@ SignInPageUiHandlers {
 	}
 	private final CurrentUser user;
 	@Inject
-	public SignInPagePresenter(final EventBus eventBus, MyView view, MyProxy proxy,
-			final DispatchAsync dispatcher,
+	public SignInPagePresenter(final EventBus eventBus, MyView view,
+			MyProxy proxy, final DispatchAsync dispatcher,
 			final PlaceManager placeManager, CurrentUser user) {
 		super(eventBus, view, proxy);
 
@@ -103,68 +102,46 @@ SignInPageUiHandlers {
 		getDispatcher().execute(new LoginAction(login, password),
 				new AsyncCallback<LoginResult>() {
 
-			@Override
-			public void onFailure(Throwable caught) {
+					@Override
+					public void onFailure(Throwable caught) {
 						if (caught instanceof LoginException) {
 							getView().setError(caught.getMessage());
-					getView().resetAndFocus();
+							getView().resetAndFocus();
 						} else {
-							caught.printStackTrace(System.err);
-							Window.alert("Caught unexpected Error:\n"
-									+ caught.toString());
+							// Fatal Unexpected error will be logged with
+							// gwt-log
+							if (Log.isDebugEnabled())
+								Log.debug("Caught unexpected Error:\n"
+										+ caught.toString());
+							Window.alert("Caught unexpected Error!\n Refer to Log for more info about this error");
 						}
-			}
+					}
 
-			@Override
-			public void onSuccess(LoginResult result) {
-				// CurrentUser currentUser = new CurrentUser();
-				user.setLogin(result.getResponse().getLogin());
-				user.setLoggedIn(result.getResponse().isLoggedIn());
-				user.setAdministrator(result.getResponse()
-						.isAdministrator());
-				LoginAuthenticatedEvent.fire(eventBus, user);
+					@Override
+					public void onSuccess(LoginResult result) {
+						// CurrentUser currentUser = new CurrentUser();
+						user.setLogin(result.getResponse().getLogin());
+						user.setLoggedIn(result.getResponse().isLoggedIn());
+						user.setAdministrator(result.getResponse()
+								.isAdministrator());
+						LoginAuthenticatedEvent.fire(eventBus, user);
 
-				PlaceRequest placeRequest = new PlaceRequest(
-						NameTokens.settingsPage);
-				// .with("username",
-				// user.getLogin());
-				getPlaceManager().revealPlace(placeRequest);
+						PlaceRequest placeRequest = new PlaceRequest(
+								NameTokens.settingsPage);
 
-				// Log.debug("onSuccess() - " + result.getSessionKey());
-			}
-		});
+						getPlaceManager().revealPlace(placeRequest);
+
+						Log.debug("onSuccess() - "
+								+ result.getResponse().getLogin());
+					}
+				});
 	}
 
 	private DispatchAsync getDispatcher() {
 		return dispatcher;
 	}
 
-	private PlaceManager getPlaceManager()  {
+	private PlaceManager getPlaceManager() {
 		return placeManager;
 	}
 }
-
-/*
-
-  // String salt = Security.randomCharString();
-  // String hash = Security.sha256(password);
-
-  Log.debug("login: " + login + ", password: " + password);
-
-
-  In JavaScript. most of the Java produced exceptions (such as NullPointerException or
-  MemoryOverflowException) are replaced by JavaScriptException. 
-
-  This means that when running in development mode, a NullPointerException will be thrown,
-  so you will need to catch (NullPointerException) but in compiled mode, you need to 
-  catch (JavaScriptException).
-
-  catch (Exception e) {
-    if (e instanceof JavaScriptException) {
-      Log.warn("JavaScriptException - ", e);
-    } else if (e instanceof NullPointerException) {
-      Log.warn("NullPointerException", e);
-    }   
-  }
-
- */
