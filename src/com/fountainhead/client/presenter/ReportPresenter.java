@@ -26,6 +26,7 @@ import com.fountainhead.shared.LoadTreeResult;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Tree;
@@ -112,6 +113,9 @@ public class ReportPresenter
 									+ caught.toString());
 
 						loader.populateTreeError(caught.getMessage());
+						Window.alert("Caught unexpected Error!\n+"
+								+ caught.toString()
+								+ "\n Refer to Log for more info about this error");
 
 					}
 

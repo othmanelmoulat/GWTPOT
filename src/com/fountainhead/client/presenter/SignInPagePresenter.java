@@ -112,7 +112,9 @@ public class SignInPagePresenter
 							if (Log.isDebugEnabled())
 								Log.debug("Sign In-Caught unexpected Error!\n"
 										+ caught.toString());
-							Window.alert("Caught unexpected Error!\n Refer to Log for more info about this error");
+							Window.alert("Caught unexpected Error!\n+"
+									+ caught.toString()
+									+ "\n Refer to Log for more info about this error");
 						}
 					}
 
