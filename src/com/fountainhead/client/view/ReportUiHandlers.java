@@ -21,8 +21,8 @@ import com.gwtplatform.mvp.client.UiHandlers;
 /**
  * {@link ReportView}'s {@link UiHandlers}.
  * 
-
  */
 public interface ReportUiHandlers extends UiHandlers {
 	void loadTree();
+	void onSelection();
 }

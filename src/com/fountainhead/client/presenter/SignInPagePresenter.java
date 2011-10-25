@@ -48,7 +48,6 @@ public class SignInPagePresenter
 	private final DispatchAsync dispatcher;
 	private final PlaceManager placeManager;
 
-	// don't forget to update SerendipityGinjector & ClientModule
 	@ProxyStandard
 	@NameToken(NameTokens.signInPage)
 	@NoGatekeeper

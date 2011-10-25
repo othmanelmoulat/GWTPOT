@@ -27,6 +27,7 @@ import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.json.client.JSONParser;
 import com.google.gwt.json.client.JSONValue;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Tree;
 import com.google.inject.Inject;
 import com.gwtplatform.dispatch.shared.DispatchAsync;
@@ -71,6 +72,8 @@ public class ReportPresenter
 		void setAdmin(boolean isAdmin);
 		void setUserName(String username);
 		Tree getTree();
+		ListBox getList();
+
 	}
 
 	@Inject
@@ -136,6 +139,24 @@ public class ReportPresenter
 	 */
 	public CurrentUser getCurrentUser() {
 		return currentUser;
+	}
+	private boolean containsItem(String item) {
+		boolean found = false;
+		for (int i = 0; i < getView().getList().getItemCount(); i++) {
+			if (item.equals(getView().getList().getItemText(i))) {
+				found = true;
+				break;
+			}
+		}
+		return found;
+
+	}
+
+	@Override
+	public void onSelection() {
+		String selectedItem = getView().getTree().getSelectedItem().getText();
+		if (!containsItem(selectedItem))
+			getView().getList().addItem(selectedItem);
 	}
 
 }

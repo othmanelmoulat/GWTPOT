@@ -25,7 +25,6 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.Tree;
-import com.google.gwt.user.client.ui.TreeItem;
 import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 import com.gwtplatform.mvp.client.ViewWithUiHandlers;
@@ -38,8 +37,7 @@ import com.gwtplatform.mvp.client.ViewWithUiHandlers;
 @SuppressWarnings("rawtypes")
 public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 		implements
-			ReportPresenter.MyView,
-			SelectionHandler {
+			ReportPresenter.MyView {
 
 	/**
 	 */
@@ -51,7 +49,7 @@ public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 	@Inject
 	public ReportView(Binder uiBinder) {
 		widget = uiBinder.createAndBindUi(this);
-		itemsTree.addSelectionHandler(this);
+		this.bindCustomUiHandlers();
 	}
 
 	@Override
@@ -61,19 +59,11 @@ public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 
 	@Override
 	public void setAdmin(boolean isAdmin) {
-		// if (isAdmin) {
-		// userPrivileges.setText("Admin");
-		// togglePrivileges.setText("Toggle to non-admin user");
-		// } else {
-		// userPrivileges.setText("Non-admin");
-		// togglePrivileges.setText("Toggle to admin user");
-		// }
-		// togglePrivileges.setVisible(true);
+
 	}
 
 	@Override
 	public void setUserName(String username) {
-		// this.userPrivileges.setText(username);
 
 	}
 
@@ -100,24 +90,25 @@ public class ReportView extends ViewWithUiHandlers<ReportUiHandlers>
 		// TODO Auto-generated method stub
 		return itemsTree;
 	}
+	@SuppressWarnings("unchecked")
+	protected void bindCustomUiHandlers() {
+
+		itemsTree.addSelectionHandler(new SelectionHandler() {
+
+			@Override
+			public void onSelection(SelectionEvent event) {
+				if (getUiHandlers() != null) {
+					getUiHandlers().onSelection();
+				}
+
+			}
+		});
+	}
 
 	@Override
-	public void onSelection(SelectionEvent event) {
-		TreeItem treeItem = (TreeItem) event.getSelectedItem();
-		String selectedItem = treeItem.getText();
-		if (!containsItem(selectedItem))
-			itemsList.addItem(selectedItem);
-
+	public ListBox getList() {
+		// TODO Auto-generated method stub
+		return itemsList;
 	}
-	private boolean containsItem(String item) {
-		boolean found = false;
-		for (int i = 0; i < itemsList.getItemCount(); i++) {
-			if (item.equals(itemsList.getItemText(i))) {
-				found = true;
-				break;
-			}
-		}
-		return found;
 
-	}
 }
