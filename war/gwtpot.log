@@ -400,3 +400,13 @@
         leaf:true
     }]
 }]
+01:19:19 DEBUG [main] JspRuntimeContext - Parent class loader is: ContextLoader@GWT Prototype
+01:19:19 DEBUG [main] JspServlet - Scratch dir for the JSP engine is: C:\Users\othman\AppData\Local\Temp\Jetty_127_0_0_1_8888_war____-g0qk00\jsp
+01:19:19 DEBUG [main] JspServlet - IMPORTANT: Do not modify the generated servlets
+01:21:19 DEBUG [main] JspRuntimeContext - Parent class loader is: ContextLoader@GWT Prototype
+01:21:19 DEBUG [main] JspServlet - Scratch dir for the JSP engine is: C:\Users\othman\AppData\Local\Temp\Jetty_127_0_0_1_8888_war____-g0qk00\jsp
+01:21:19 DEBUG [main] JspServlet - IMPORTANT: Do not modify the generated servlets
+01:21:50 DEBUG [btpool0-1] ServerLogImplLog4J - Sign In-Caught unexpected Error!
+com.gwtplatform.dispatch.shared.ServiceException: Service exception executing action "LoginAction", java.lang.ArithmeticException: / by zero
+01:21:50 DEBUG [btpool0-1] ServerLogImplLog4J - Sign In-Caught unexpected Error!
+com.gwtplatform.dispatch.shared.ServiceException: Service exception executing action "LoginAction", java.lang.ArithmeticException: / by zero
