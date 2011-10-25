@@ -39,8 +39,6 @@ import com.google.inject.Inject;
  * {@link LinkMenu.Binder} interface as a singleton, which is done in
  * {@link UiModule}.
  * 
-
-
  */
 public class LinkMenu extends Composite {
 

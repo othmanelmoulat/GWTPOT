@@ -7,7 +7,7 @@
 	<g:HTMLPanel>
 <!-- 	    <p>Currently logged in as: <g:InlineLabel ui:field="userPrivileges"/></p> -->
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getHomeNewsPage}">Home</g:InlineHyperlink> | 
-		<g:InlineHyperlink targetHistoryToken="{nameTokens.getSettingsPage}">Report</g:InlineHyperlink>
+		<g:InlineHyperlink targetHistoryToken="{nameTokens.getSettingsPage}">Report</g:InlineHyperlink> |
 		<g:InlineHyperlink targetHistoryToken="{nameTokens.getDialogSamplePage}">About US</g:InlineHyperlink> | 
 		
 	</g:HTMLPanel>
