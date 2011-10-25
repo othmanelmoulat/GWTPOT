@@ -1,6 +1,6 @@
-@def darkPanelColor  #91c0ef ;
+@def darkPanelColor #6F7D94; /* #91c0ef ;*/
 @def topBar  #E6E6E6;
-@def lightPanelColor #E9F2FC;
+@def lightPanelColor #fff ; /*#E9F2FC;*/
 @def messageBoxColor #fad163;
 @def titleFontWeight  bold;
 @def titleFontSize    22px;
